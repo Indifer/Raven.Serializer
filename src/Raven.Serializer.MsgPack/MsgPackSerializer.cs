@@ -1,27 +1,16 @@
-﻿using System;
+﻿using MsgPack.Serialization;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Raven.Serializer.MsgPack
+namespace Raven.Serializer.MsgPack2
 {
     public class MsgPackSerializer : IDataSerializer
     {
-        public MsgPackSerializer(Action<SerializerRepository> customSerializerRegistrar = null, System.Text.Encoding encoding = null)
-        {
-            if (customSerializerRegistrar != null)
-            {
-                customSerializerRegistrar(SerializationContext.Default.Serializers);
-            }
-
-            if (encoding == null)
-            {
-                this.encoding = System.Text.Encoding.UTF8;
-            }
-        }
-
-        private readonly System.Text.Encoding encoding;
+        private static readonly Encoding encoding = Encoding.UTF8;
 
         public T Deserialize<T>(byte[] data)
         {
@@ -31,25 +20,26 @@ namespace Raven.Serializer.MsgPack
             }
             var serializer = MessagePackSerializer.Get<T>();
 
-            using (var byteStream = new MemoryStream(serializedObject))
+            using (var byteStream = new MemoryStream(data))
             {
                 return serializer.Unpack(byteStream);
             }
-        }
-
-        public Task<object> DeserializeAsync(byte[] data)
-        {
-            throw new NotImplementedException();
-        }
+        }        
 
         public byte[] Serialize(object obj)
         {
-            throw new NotImplementedException();
-        }
+            if (obj is string)
+            {
+                return encoding.GetBytes(obj.ToString());
+            }
 
-        public Task<byte[]> SerializeAsync(object obj)
-        {
-            throw new NotImplementedException();
+            var serializer = MessagePackSerializer.Get(obj.GetType());
+
+            using (var byteStream = new MemoryStream())
+            {
+                serializer.Pack(byteStream, obj);
+                return byteStream.ToArray();
+            }
         }
     }
 }

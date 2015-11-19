@@ -10,12 +10,8 @@ namespace Raven.Serializer
     {
         byte[] Serialize(object obj);
 
-		Task<byte[]> SerializeAsync(object obj);
-
         T Deserialize<T>(byte[] data);
-
-		Task<object> DeserializeAsync(byte[] data);
     }
 
-    
+
 }
