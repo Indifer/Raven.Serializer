@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Raven.Serializer.Jil
 {
-    public class JilSerializer : IDataSerializer
+    public class JilJsonSerializer : IDataSerializer
     {
         private static readonly Encoding encoding = Encoding.UTF8;
 
