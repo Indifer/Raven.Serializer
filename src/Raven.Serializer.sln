@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer", "Raven.Serializer\Raven.Serializer.csproj", "{9A8FDCDA-5B66-40BB-86ED-16BEDC7C1570}"
 EndProject
@@ -12,6 +12,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.Jil", "Raven.Serializer.Jil\Raven.Serializer.Jil.csproj", "{6D8795DF-F0AA-4DD3-AB4E-015D44B23C2F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.Protobuf", "Raven.Serializer.Protobuf\Raven.Serializer.Protobuf.csproj", "{C6DEA409-AA8D-45AC-9968-B29607A2F4D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.Test", "Test\Raven.Serializer.Test\Raven.Serializer.Test.csproj", "{1CD872F9-BFB8-4595-A45D-91766DF2B7AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.PerformanceTest", "Test\Raven.Serializer.PerformanceTest\Raven.Serializer.PerformanceTest.csproj", "{DBCB47AB-17F3-4A2E-BEDE-6035F4F52AA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{C6DEA409-AA8D-45AC-9968-B29607A2F4D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6DEA409-AA8D-45AC-9968-B29607A2F4D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6DEA409-AA8D-45AC-9968-B29607A2F4D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CD872F9-BFB8-4595-A45D-91766DF2B7AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CD872F9-BFB8-4595-A45D-91766DF2B7AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CD872F9-BFB8-4595-A45D-91766DF2B7AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CD872F9-BFB8-4595-A45D-91766DF2B7AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBCB47AB-17F3-4A2E-BEDE-6035F4F52AA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBCB47AB-17F3-4A2E-BEDE-6035F4F52AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBCB47AB-17F3-4A2E-BEDE-6035F4F52AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBCB47AB-17F3-4A2E-BEDE-6035F4F52AA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
