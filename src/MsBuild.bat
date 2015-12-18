@@ -5,14 +5,14 @@ if not exist %fdir% (
 )
 
 set msbuild=C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe
-%msbuild% Raven.Serializer.Jil/Raven.Serializer.Jil.csproj /t:Clean;Rebuild /p:Configuration=Release;VisualStudioVersion=12.0;OutputPath="..\..\output\net45\Raven.Serializer.Jil"
+%msbuild% Raven.Serializer.WithJil/Raven.Serializer.WithJil.csproj /t:Clean;Rebuild /p:Configuration=Release;VisualStudioVersion=12.0;OutputPath="..\..\output\net45\Raven.Serializer.WithJil"
 
 set msbuild=C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe
-%msbuild% Raven.Serializer.MsgPack/Raven.Serializer.MsgPack.csproj /t:Clean;Rebuild /p:Configuration=Release;VisualStudioVersion=12.0;OutputPath="..\..\output\net45\Raven.Serializer.MsgPack"
+%msbuild% Raven.Serializer.WithMsgPack/Raven.Serializer.WithMsgPack.csproj /t:Clean;Rebuild /p:Configuration=Release;VisualStudioVersion=12.0;OutputPath="..\..\output\net45\Raven.Serializer.WithMsgPack"
 
 set msbuild=C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe
-%msbuild% Raven.Serializer.Protobuf/Raven.Serializer.Protobuf.csproj /t:Clean;Rebuild /p:Configuration=Release;VisualStudioVersion=12.0;OutputPath="..\..\output\net45\Raven.Serializer.Protobuf"
+%msbuild% Raven.Serializer.WithProtobuf/Raven.Serializer.WithProtobuf.csproj /t:Clean;Rebuild /p:Configuration=Release;VisualStudioVersion=12.0;OutputPath="..\..\output\net45\Raven.Serializer.WithProtobuf"
 
 set msbuild=C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe
-%msbuild% Raven.Serializer.Newtonsoft/Raven.Serializer.Newtonsoft.csproj /t:Clean;Rebuild /p:Configuration=Release;VisualStudioVersion=12.0;OutputPath="..\..\output\net45\Raven.Serializer.Newtonsoft"
+%msbuild% Raven.Serializer.WithNewtonsoft/Raven.Serializer.WithNewtonsoft.csproj /t:Clean;Rebuild /p:Configuration=Release;VisualStudioVersion=12.0;OutputPath="..\..\output\net45\Raven.Serializer.WithNewtonsoft"
 pause
