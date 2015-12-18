@@ -5,17 +5,21 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer", "Raven.Serializer\Raven.Serializer.csproj", "{9A8FDCDA-5B66-40BB-86ED-16BEDC7C1570}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.MsgPack", "Raven.Serializer.MsgPack\Raven.Serializer.MsgPack.csproj", "{39523607-3427-4A9F-93AF-8D0169CFE6A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.WithMsgPack", "Raven.Serializer.WithMsgPack\Raven.Serializer.WithMsgPack.csproj", "{39523607-3427-4A9F-93AF-8D0169CFE6A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.Newtonsoft", "Raven.Serializer.Newtonsoft\Raven.Serializer.Newtonsoft.csproj", "{0E49F049-4796-436A-9148-BA9FD342A2EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.WithNewtonsoft", "Raven.Serializer.WithNewtonsoft\Raven.Serializer.WithNewtonsoft.csproj", "{0E49F049-4796-436A-9148-BA9FD342A2EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.Jil", "Raven.Serializer.Jil\Raven.Serializer.Jil.csproj", "{6D8795DF-F0AA-4DD3-AB4E-015D44B23C2F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.WithJil", "Raven.Serializer.WithJil\Raven.Serializer.WithJil.csproj", "{6D8795DF-F0AA-4DD3-AB4E-015D44B23C2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.Protobuf", "Raven.Serializer.Protobuf\Raven.Serializer.Protobuf.csproj", "{C6DEA409-AA8D-45AC-9968-B29607A2F4D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.WithProtobuf", "Raven.Serializer.WithProtobuf\Raven.Serializer.WithProtobuf.csproj", "{C6DEA409-AA8D-45AC-9968-B29607A2F4D7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.Test", "Test\Raven.Serializer.Test\Raven.Serializer.Test.csproj", "{1CD872F9-BFB8-4595-A45D-91766DF2B7AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.PerformanceTest", "Test\Raven.Serializer.PerformanceTest\Raven.Serializer.PerformanceTest.csproj", "{DBCB47AB-17F3-4A2E-BEDE-6035F4F52AA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{85791CF6-81DA-4040-9251-FB6B460824BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{18667136-F536-494B-B3A3-8D035A12C590}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,5 +58,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9A8FDCDA-5B66-40BB-86ED-16BEDC7C1570} = {85791CF6-81DA-4040-9251-FB6B460824BD}
+		{39523607-3427-4A9F-93AF-8D0169CFE6A7} = {85791CF6-81DA-4040-9251-FB6B460824BD}
+		{0E49F049-4796-436A-9148-BA9FD342A2EF} = {85791CF6-81DA-4040-9251-FB6B460824BD}
+		{6D8795DF-F0AA-4DD3-AB4E-015D44B23C2F} = {85791CF6-81DA-4040-9251-FB6B460824BD}
+		{C6DEA409-AA8D-45AC-9968-B29607A2F4D7} = {85791CF6-81DA-4040-9251-FB6B460824BD}
+		{1CD872F9-BFB8-4595-A45D-91766DF2B7AA} = {18667136-F536-494B-B3A3-8D035A12C590}
+		{DBCB47AB-17F3-4A2E-BEDE-6035F4F52AA5} = {18667136-F536-494B-B3A3-8D035A12C590}
 	EndGlobalSection
 EndGlobal

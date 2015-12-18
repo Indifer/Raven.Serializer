@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Raven.Serializer.Protobuf\Raven.Serializer.Protobuf.csproj">
+    <ProjectReference Include="..\..\Raven.Serializer.WithProtobuf\Raven.Serializer.WithProtobuf.csproj">
       <Project>{c6dea409-aa8d-45ac-9968-b29607a2f4d7}</Project>
-      <Name>Raven.Serializer.Protobuf</Name>
+      <Name>Raven.Serializer.WithProtobuf</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

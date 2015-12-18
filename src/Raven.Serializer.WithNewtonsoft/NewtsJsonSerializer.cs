@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Raven.Serializer.Newtonsoft
+namespace Raven.Serializer.WithNewtonsoft
 {
     public class NewtsJsonSerializer : IDataSerializer
     {
