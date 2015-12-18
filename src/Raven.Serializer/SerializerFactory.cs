@@ -24,7 +24,7 @@ namespace Raven.Serializer
         /// <summary>
         /// 缓存类型
         /// </summary>
-        private static IDataSerializer SerializerType(SerializerType serializerType)
+        private static IDataSerializer GetDataSerializer(SerializerType serializerType)
         {
             if (_serializerDict.ContainsKey(serializerType))
             {
@@ -51,9 +51,21 @@ namespace Raven.Serializer
         /// <returns></returns>
         public static IDataSerializer Create(SerializerType serializerType)
         {
-            IDataSerializer serializer = SerializerType(serializerType);
+            IDataSerializer serializer = GetDataSerializer(serializerType);
             //IDataSerializer serializer = (IDataSerializer)Activator.CreateInstance(type, new object[] { });
             return serializer;
+        }
+
+        /// <summary>
+        /// 创建类型
+        /// </summary>
+        /// <param name="serializerType"></param>
+        /// <returns></returns>
+        public static IDataSerializer Create(string serializerType)
+        {
+            SerializerType serializerTypeEnum;
+            Enum.TryParse(serializerType, out serializerTypeEnum);
+            return Create(serializerTypeEnum);
         }
     }
 }
