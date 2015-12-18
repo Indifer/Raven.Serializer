@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Raven.Serializer.WithNewtonsoft</name>
+    </assembly>
+    <members>
+        <member name="T:Raven.Serializer.WithNewtonsoft.NewtsBsonSerializer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Raven.Serializer.WithNewtonsoft.NewtsBsonSerializer.Deserialize``1(System.Byte[])">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Raven.Serializer.WithNewtonsoft.NewtsBsonSerializer.Serialize(System.Object)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Raven.Serializer.WithNewtonsoft.NewtsJsonSerializer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Raven.Serializer.WithNewtonsoft.NewtsJsonSerializer.Deserialize``1(System.Byte[])">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Raven.Serializer.WithNewtonsoft.NewtsJsonSerializer.Serialize(System.Object)">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

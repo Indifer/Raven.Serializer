@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace Raven.Serializer.WithProtobuf
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ProtobufSerializer : IDataSerializer
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public T Deserialize<T>(byte[] data)
         {
             using (var ms = new MemoryStream(data))
@@ -17,6 +23,9 @@ namespace Raven.Serializer.WithProtobuf
             }            
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public byte[] Serialize(object obj)
         {
             using (var ms = new MemoryStream())

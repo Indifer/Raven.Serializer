@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Raven.Serializer
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class SerializerFactory
     {
         #region 字段、属性

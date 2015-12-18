@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Raven.Serializer.WithProtobuf</name>
+    </assembly>
+    <members>
+        <member name="T:Raven.Serializer.WithProtobuf.ProtobufSerializer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Raven.Serializer.WithProtobuf.ProtobufSerializer.Deserialize``1(System.Byte[])">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Raven.Serializer.WithProtobuf.ProtobufSerializer.Serialize(System.Object)">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

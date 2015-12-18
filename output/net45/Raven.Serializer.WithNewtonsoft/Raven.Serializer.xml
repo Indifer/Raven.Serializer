@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Raven.Serializer</name>
+    </assembly>
+    <members>
+        <member name="T:Raven.Serializer.IDataSerializer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Raven.Serializer.IDataSerializer.Serialize(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Raven.Serializer.IDataSerializer.Deserialize``1(System.Byte[])">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Raven.Serializer.SerializerFactory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Raven.Serializer.SerializerFactory.GetDataSerializer(Raven.Serializer.SerializerType)">
+            <summary>
+            缓存类型
+            </summary>
+        </member>
+        <member name="M:Raven.Serializer.SerializerFactory.Create(Raven.Serializer.SerializerType)">
+            <summary>
+            创建类型
+            </summary>
+            <param name="serializerType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Raven.Serializer.SerializerFactory.Create(System.String)">
+            <summary>
+            创建类型
+            </summary>
+            <param name="serializerType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Raven.Serializer.SerializerType">
+            <summary>
+            序列化类型
+            </summary>
+        </member>
+        <member name="F:Raven.Serializer.SerializerType.Jil">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Raven.Serializer.SerializerType.MsgPack">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Raven.Serializer.SerializerType.Protobuf">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Raven.Serializer.SerializerType.NewtonsoftJson">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Raven.Serializer.SerializerType.NewtonsoftBson">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

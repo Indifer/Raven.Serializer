@@ -7,16 +7,30 @@ using System.Threading.Tasks;
 
 namespace Raven.Serializer.WithJil
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class JilJsonSerializer : IDataSerializer
     {
         private static readonly Encoding encoding = Encoding.UTF8;
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public byte[] Serialize(object obj)
         {
             var jsonString = JSON.Serialize(obj);
             return encoding.GetBytes(jsonString);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public T Deserialize<T>(byte[] data)
         {
             var jsonString = encoding.GetString(data);

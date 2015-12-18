@@ -8,11 +8,19 @@ using System.Threading.Tasks;
 
 namespace Raven.Serializer.WithMsgPack
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class MsgPackSerializer : IDataSerializer
     {
         private static Dictionary<Type, IMessagePackSerializer> msgPackserializers = new Dictionary<Type, IMessagePackSerializer>();
         private static readonly Encoding encoding = Encoding.UTF8;
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public byte[] Serialize(object obj)
         {
             if (obj is string)
@@ -40,6 +48,12 @@ namespace Raven.Serializer.WithMsgPack
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public T Deserialize<T>(byte[] data)
         {
             Type t = typeof(T);
