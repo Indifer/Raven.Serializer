@@ -24,21 +24,46 @@ namespace Raven.Serializer.PerformanceTest
             //    Console.WriteLine(DateTime.Now.ToString());
             //}
 
-            int speed = 500000;
+
+            Mall mall = new Mall()
+            {
+                ID = 1,
+                Name = "大悦城",
+                GroupID = 135,
+                A = "aaaa",
+                B = "BBBB",
+                C = "hygfjrt7kuylkhgliu;oi;yhdhtfjhsj",
+                D = "kuykj687jrstskhgfk",
+                E = "jhlhlgjhkuykjuyt",
+                F = "djsgfjdjg",
+                G = "fdsgasdgs",
+                H = "hgfdhergfdhs",
+                I = "fdjnhterjrgtas",
+                J = "fdhs5htrjgfdfdg",
+                User = new User()
+                {
+                    Date = DateTime.Now,
+                    ID = 132414,
+                    Name = "ggsgshahsahsdha"
+                }
+            };
+            int speed = 1000000;
 
             Console.WriteLine("序列化数据次数：{0:N0}", speed);
 
             SpinWait.SpinUntil(() => false, 500);
-            Factory(speed, SerializerType.Jil);
+            Factory(speed, SerializerType.Jil, mall);
 
             SpinWait.SpinUntil(() => false, 500);
-            Factory(speed, SerializerType.MsgPack);
+            Factory(speed, SerializerType.MsgPack, mall);
 
             SpinWait.SpinUntil(() => false, 500);
-            Factory(speed, SerializerType.NewtonsoftBson);
+            Factory(speed, SerializerType.NewtonsoftBson, mall);
 
             SpinWait.SpinUntil(() => false, 500);
-            Factory(speed, SerializerType.NewtonsoftJson);
+            Factory(speed, SerializerType.NewtonsoftJson, mall);
+
+            Console.WriteLine("over......");
 
             //SpinWait.SpinUntil(() => false, 500);
             //ProtobufTest(speed);
@@ -84,11 +109,10 @@ namespace Raven.Serializer.PerformanceTest
             Console.WriteLine("ProtobufTest Deserialize:{0}", sw.ElapsedMilliseconds);
         }
 
-        public static void Factory(int speed, SerializerType type)
+        public static void Factory(int speed, SerializerType type, Mall mall)
         {
             //var serializer = global::MsgPack.Serialization.MessagePackSerializer.Get<Mall>();
             IDataSerializer serializer = SerializerFactory.Create(type);
-            Mall mall = new Mall() { ID = 1, Name = "大悦城", GroupID = 135 };
             Stopwatch sw = new Stopwatch();
             byte[] data = null;
 
