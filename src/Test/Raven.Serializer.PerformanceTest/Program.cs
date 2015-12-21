@@ -30,14 +30,14 @@ namespace Raven.Serializer.PerformanceTest
                 ID = 1,
                 Name = "大悦城",
                 GroupID = 135,
-                A = "aaaa",
-                B = "BBBB",
-                C = "hygfjrt7kuylkhgliu;oi;yhdhtfjhsj",
+                AAAAAAAAAA = "aaaa",
+                BBBBBBBBBB = "BBBB",
+                CCCCCCCCCC = "hygfjrt7kuylkhgliu;oi;yhdhtfjhsj",
                 D = "kuykj687jrstskhgfk",
-                E = "jhlhlgjhkuykjuyt",
+                EEEEEEEEEE = "jhlhlgjhkuykjuyt",
                 F = "djsgfjdjg",
                 G = "fdsgasdgs",
-                H = "hgfdhergfdhs",
+                HHHHHHHHHH = "hgfdhergfdhs",
                 I = "fdjnhterjrgtas",
                 J = "fdhs5htrjgfdfdg",
                 User = new User()
@@ -47,7 +47,7 @@ namespace Raven.Serializer.PerformanceTest
                     Name = "ggsgshahsahsdha"
                 }
             };
-            int speed = 1000000;
+            int speed = 500000;
 
             Console.WriteLine("序列化数据次数：{0:N0}", speed);
 
@@ -99,6 +99,7 @@ namespace Raven.Serializer.PerformanceTest
 
             Console.WriteLine("ProtobufTest Serialize:{0}", sw.ElapsedMilliseconds);
 
+            SpinWait.SpinUntil(() => false, 500);
             sw.Restart();
             for (var i = 0; i < speed; i++)
             {
