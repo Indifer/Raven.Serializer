@@ -19,6 +19,22 @@ namespace Raven.Serializer.WithNewtonsoft
         /// <summary>
         /// 
         /// </summary>
+        public byte[] Serialize(object obj)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (BsonWriter writer = new BsonWriter(ms))
+                {
+                    //serializer.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                    serializer.Serialize(writer, obj);
+                }
+                return ms.ToArray();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public T Deserialize<T>(byte[] data)
         {
             using (MemoryStream ms = new MemoryStream(data))
@@ -35,16 +51,21 @@ namespace Raven.Serializer.WithNewtonsoft
         /// <summary>
         /// 
         /// </summary>
-        public byte[] Serialize(object obj)
+        /// <typeparam name="T"></typeparam>
+        /// <param name="buffer"></param>
+        /// <param name="index"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public T Deserialize<T>(byte[] buffer, int index, int count)
         {
-            using (MemoryStream ms = new MemoryStream())
+            using (MemoryStream ms = new MemoryStream(buffer, index, count))
             {
-                using (BsonWriter writer = new BsonWriter(ms))
+                using (BsonReader reader = new BsonReader(ms))
                 {
-                    //serializer.DateFormatString = "yyyy-MM-dd HH:mm:ss";
-                    serializer.Serialize(writer, obj);
+                    //serializer.DateFormatString = "yyyy-MM-dd HH:mm:ss";                    
+                    T obj = serializer.Deserialize<T>(reader);
+                    return obj;
                 }
-                return ms.ToArray();
             }
         }
     }

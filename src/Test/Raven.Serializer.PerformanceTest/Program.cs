@@ -51,17 +51,17 @@ namespace Raven.Serializer.PerformanceTest
 
             Console.WriteLine("序列化数据次数：{0:N0}", speed);
 
-            SpinWait.SpinUntil(() => false, 500);
-            Factory(speed, SerializerType.Jil, mall);
+            //SpinWait.SpinUntil(() => false, 500);
+            //Factory(speed, SerializerType.Jil, mall);
 
             SpinWait.SpinUntil(() => false, 500);
             Factory(speed, SerializerType.MsgPack, mall);
 
-            SpinWait.SpinUntil(() => false, 500);
-            Factory(speed, SerializerType.NewtonsoftBson, mall);
+            //SpinWait.SpinUntil(() => false, 500);
+            //Factory(speed, SerializerType.NewtonsoftBson, mall);
 
-            SpinWait.SpinUntil(() => false, 500);
-            Factory(speed, SerializerType.NewtonsoftJson, mall);
+            //SpinWait.SpinUntil(() => false, 500);
+            //Factory(speed, SerializerType.NewtonsoftJson, mall);
 
             Console.WriteLine("over......");
 

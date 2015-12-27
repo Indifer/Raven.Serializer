@@ -13,8 +13,8 @@ namespace Raven.Serializer.WithMsgPack
     /// </summary>
     public class MsgPackSerializer : IDataSerializer
     {
-        private static Dictionary<Type, IMessagePackSerializer> msgPackserializers = new Dictionary<Type, IMessagePackSerializer>();
-        private static readonly Encoding encoding = Encoding.UTF8;
+        private static Dictionary<Type, IMessagePackSingleObjectSerializer> msgPackserializers = new Dictionary<Type, IMessagePackSingleObjectSerializer>();
+        //private static readonly Encoding encoding = Encoding.UTF8;
         
         /// <summary>
         /// 
@@ -23,29 +23,15 @@ namespace Raven.Serializer.WithMsgPack
         /// <returns></returns>
         public byte[] Serialize(object obj)
         {
-            if (obj is string)
-            {
-                return encoding.GetBytes(obj.ToString());
-            }
             Type t = obj.GetType();
+            IMessagePackSingleObjectSerializer serializer = GetSerializer(t);
 
-            IMessagePackSerializer serializer = null;
-            //var serializer = MessagePackSerializer.Get(t);
-            if (!msgPackserializers.ContainsKey(t))
-            {
-                serializer = MessagePackSerializer.Get(t);
-                msgPackserializers[t] = serializer;
-            }
-            else
-            {
-                serializer = msgPackserializers[t];
-            }
-            
-            using (var byteStream = new MemoryStream())
-            {
-                serializer.Pack(byteStream, obj);
-                return byteStream.ToArray();
-            }
+            return serializer.PackSingleObject(obj);
+            //using (var byteStream = new MemoryStream())
+            //{
+            //    serializer.Pack(byteStream, obj);
+            //    return byteStream.ToArray();
+            //}
         }
 
         /// <summary>
@@ -57,25 +43,53 @@ namespace Raven.Serializer.WithMsgPack
         public T Deserialize<T>(byte[] data)
         {
             Type t = typeof(T);
-            if (t == typeof(string))
+            IMessagePackSingleObjectSerializer serializer = GetSerializer(t);
+
+            return ((MessagePackSerializer<T>)serializer).UnpackSingleObject(data);
+            //using (var byteStream = new MemoryStream(data))
+            //{
+            //    return ((MessagePackSerializer<T>)serializer).Unpack(byteStream);
+            //}
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data"></param>
+        /// <param name="index"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public T Deserialize<T>(byte[] buffer, int index, int count)
+        {
+            Type t = typeof(T);
+            IMessagePackSingleObjectSerializer serializer = GetSerializer(t);
+
+            using (var byteStream = new MemoryStream(buffer, index, count))
             {
-                return (T)Convert.ChangeType(encoding.GetString(data), t);
+                return ((MessagePackSerializer<T>)serializer).Unpack(byteStream);
             }
-            IMessagePackSerializer serializer = null;
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        private IMessagePackSingleObjectSerializer GetSerializer(Type t)
+        {
+            IMessagePackSingleObjectSerializer serializer = null;
             if (!msgPackserializers.ContainsKey(t))
             {
-                serializer = MessagePackSerializer.Get<T>();
+                serializer = MessagePackSerializer.Get(t);
                 msgPackserializers[t] = serializer;
             }
             else
             {
                 serializer = msgPackserializers[t];
             }
-
-            using (var byteStream = new MemoryStream(data))
-            {
-                return ((MessagePackSerializer<T>)serializer).Unpack(byteStream);
-            }
+            return serializer;
         }
     }
 }

@@ -35,6 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MsgPack, Version=0.6.0.0, Culture=neutral, PublicKeyToken=a2625990d5dc0167, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MsgPack.Cli.0.6.7\lib\net45\MsgPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sigil, Version=4.5.1.0, Culture=neutral, PublicKeyToken=2d06c3494341c8ab, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sigil.4.5.1\lib\net45\Sigil.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -50,14 +59,37 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="MsgPackTest.cs" />
+    <Compile Include="..\Raven.Serializer.PerformanceTest\Mall.cs">
+      <Link>Mall.cs</Link>
+    </Compile>
+    <Compile Include="SerializerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Raven.Serializer.WithJil\Raven.Serializer.WithJil.csproj">
+      <Project>{6d8795df-f0aa-4dd3-ab4e-015d44b23c2f}</Project>
+      <Name>Raven.Serializer.WithJil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Raven.Serializer.WithMsgPack\Raven.Serializer.WithMsgPack.csproj">
+      <Project>{39523607-3427-4a9f-93af-8d0169cfe6a7}</Project>
+      <Name>Raven.Serializer.WithMsgPack</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Raven.Serializer.WithNewtonsoft\Raven.Serializer.WithNewtonsoft.csproj">
+      <Project>{0e49f049-4796-436a-9148-ba9fd342a2ef}</Project>
+      <Name>Raven.Serializer.WithNewtonsoft</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Raven.Serializer.WithProtobuf\Raven.Serializer.WithProtobuf.csproj">
       <Project>{c6dea409-aa8d-45ac-9968-b29607a2f4d7}</Project>
       <Name>Raven.Serializer.WithProtobuf</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Raven.Serializer\Raven.Serializer.csproj">
+      <Project>{9a8fdcda-5b66-40bb-86ed-16bedc7c1570}</Project>
+      <Name>Raven.Serializer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
