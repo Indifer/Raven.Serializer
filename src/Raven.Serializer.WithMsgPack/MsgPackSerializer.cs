@@ -56,7 +56,7 @@ namespace Raven.Serializer.WithMsgPack
         /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="data"></param>
+        /// <param name="buffer"></param>
         /// <param name="index"></param>
         /// <param name="count"></param>
         /// <returns></returns>
