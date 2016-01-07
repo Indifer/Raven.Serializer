@@ -47,43 +47,46 @@ namespace Raven.Serializer.PerformanceTest
                     Name = "ggsgshahsahsdha"
                 }
             };
-            int speed = 500000;
+            int seed = 500000;
 
-            Console.WriteLine("序列化数据次数：{0:N0}", speed);
-
-            //SpinWait.SpinUntil(() => false, 500);
-            //Factory(speed, SerializerType.Jil, mall);
+            Console.WriteLine("序列化数据次数：{0:N0}", seed);
 
             SpinWait.SpinUntil(() => false, 500);
-            Factory(speed, SerializerType.MsgPack, mall);
+            Factory(seed, SerializerType.Jil, mall);
 
-            //SpinWait.SpinUntil(() => false, 500);
-            //Factory(speed, SerializerType.NewtonsoftBson, mall);
+            SpinWait.SpinUntil(() => false, 500);
+            Factory(seed, SerializerType.MsgPack, mall);
 
-            //SpinWait.SpinUntil(() => false, 500);
-            //Factory(speed, SerializerType.NewtonsoftJson, mall);
+            SpinWait.SpinUntil(() => false, 500);
+            MsgPackTest(seed, mall);
+
+            SpinWait.SpinUntil(() => false, 500);
+            Factory(seed, SerializerType.NewtonsoftBson, mall);
+
+            SpinWait.SpinUntil(() => false, 500);
+            Factory(seed, SerializerType.NewtonsoftJson, mall);
 
             Console.WriteLine("over......");
 
             //SpinWait.SpinUntil(() => false, 500);
-            //ProtobufTest(speed);
+            //ProtobufTest(seed);
 
             //SpinWait.SpinUntil(() => false, 500);
-            //MsgPackTest(speed);
+            //MsgPackTest(seed);
 
             //SpinWait.SpinUntil(() => false, 500);
-            //JilTest(speed);
+            //JilTest(seed);
 
             //SpinWait.SpinUntil(() => false, 500);
-            //NewtonsoftTest(speed);
+            //NewtonsoftTest(seed);
 
             //SpinWait.SpinUntil(() => false, 500);
-            //NewtonsoftTestBson(speed);
+            //NewtonsoftTestBson(seed);
 
             Console.ReadLine();
         }
 
-        public static void ProtobufTest(int speed)
+        public static void ProtobufTest(int seed)
         {
             ProtobufSerializer serializer = new ProtobufSerializer();
             Mall mall = new Mall() { ID = 1, Name = "大悦城", GroupID = 135 };
@@ -91,7 +94,7 @@ namespace Raven.Serializer.PerformanceTest
             byte[] data = null;
 
             sw.Restart();
-            for (var i = 0; i < speed; i++)
+            for (var i = 0; i < seed; i++)
             {
                 data = serializer.Serialize(mall);
             }
@@ -101,7 +104,7 @@ namespace Raven.Serializer.PerformanceTest
 
             SpinWait.SpinUntil(() => false, 500);
             sw.Restart();
-            for (var i = 0; i < speed; i++)
+            for (var i = 0; i < seed; i++)
             {
                 mall = serializer.Deserialize<Mall>(data);
             }
@@ -110,7 +113,7 @@ namespace Raven.Serializer.PerformanceTest
             Console.WriteLine("ProtobufTest Deserialize:{0}", sw.ElapsedMilliseconds);
         }
 
-        public static void Factory(int speed, SerializerType type, Mall mall)
+        public static void Factory(int seed, SerializerType type, Mall mall)
         {
             //var serializer = global::MsgPack.Serialization.MessagePackSerializer.Get<Mall>();
             IDataSerializer serializer = SerializerFactory.Create(type);
@@ -118,7 +121,7 @@ namespace Raven.Serializer.PerformanceTest
             byte[] data = null;
 
             sw.Restart();
-            for (var i = 0; i < speed; i++)
+            for (var i = 0; i < seed; i++)
             {
                 data = serializer.Serialize(mall);
             }
@@ -127,7 +130,7 @@ namespace Raven.Serializer.PerformanceTest
             Console.WriteLine("{1} Serialize:{0}", sw.ElapsedMilliseconds, serializer.GetType().Name);
 
             sw.Restart();
-            for (var i = 0; i < speed; i++)
+            for (var i = 0; i < seed; i++)
             {
                 mall = serializer.Deserialize<Mall>(data);
             }
@@ -136,33 +139,35 @@ namespace Raven.Serializer.PerformanceTest
             Console.WriteLine("{1} Deserialize:{0}", sw.ElapsedMilliseconds, serializer.GetType().Name);
         }
 
-        public static void MsgPackTest(int speed)
+        public static void MsgPackTest(int seed, Mall mall)
         {
-            MsgPackSerializer serializer = new MsgPackSerializer();
-            Mall mall = new Mall() { ID = 1, Name = "大悦城", GroupID = 135 };
+            //MsgPackSerializer serializer = new MsgPackSerializer();
+            var serializer = MsgPack.Serialization.MessagePackSerializer.Get<Mall>();
             Stopwatch sw = new Stopwatch();
             byte[] data = null;
 
             sw.Restart();
-            for (var i = 0; i < speed; i++)
+            for (var i = 0; i < seed; i++)
             {
-                data = serializer.Serialize(mall);
+                data = serializer.PackSingleObject(mall);
+                //data = serializer.Serialize(mall);
             }
             sw.Stop();
 
             Console.WriteLine("MsgPackTest Serialize:{0}", sw.ElapsedMilliseconds);
 
             sw.Restart();
-            for (var i = 0; i < speed; i++)
+            for (var i = 0; i < seed; i++)
             {
-                mall = serializer.Deserialize<Mall>(data);
+                mall = serializer.UnpackSingleObject(data);
+                //mall = serializer.Deserialize<Mall>(data);
             }
             sw.Stop();
 
             Console.WriteLine("MsgPackTest Deserialize:{0}", sw.ElapsedMilliseconds);
         }
 
-        public static void JilTest(int speed)
+        public static void JilTest(int seed)
         {
             JilJsonSerializer serializer = new JilJsonSerializer();
             Mall mall = new Mall() { ID = 1, Name = "大悦城", GroupID = 135 };
@@ -170,7 +175,7 @@ namespace Raven.Serializer.PerformanceTest
             byte[] data = null;
 
             sw.Restart();
-            for (var i = 0; i < speed; i++)
+            for (var i = 0; i < seed; i++)
             {
                 data = serializer.Serialize(mall);
             }
@@ -179,7 +184,7 @@ namespace Raven.Serializer.PerformanceTest
             Console.WriteLine("JilTest Serialize:{0}", sw.ElapsedMilliseconds);
 
             sw.Restart();
-            for (var i = 0; i < speed; i++)
+            for (var i = 0; i < seed; i++)
             {
                 mall = serializer.Deserialize<Mall>(data);
             }
@@ -188,7 +193,7 @@ namespace Raven.Serializer.PerformanceTest
             Console.WriteLine("JilTest Deserialize:{0}", sw.ElapsedMilliseconds);
         }
 
-        public static void NewtonsoftTest(int speed)
+        public static void NewtonsoftTest(int seed)
         {
             NewtsJsonSerializer serializer = new NewtsJsonSerializer();
             Mall mall = new Mall() { ID = 1, Name = "大悦城", GroupID = 135 };
@@ -196,7 +201,7 @@ namespace Raven.Serializer.PerformanceTest
             byte[] data = null;
 
             sw.Restart();
-            for (var i = 0; i < speed; i++)
+            for (var i = 0; i < seed; i++)
             {
                 data = serializer.Serialize(mall);
             }
@@ -205,7 +210,7 @@ namespace Raven.Serializer.PerformanceTest
             Console.WriteLine("NewtonsoftTest Json Serialize:{0}", sw.ElapsedMilliseconds);
 
             sw.Restart();
-            for (var i = 0; i < speed; i++)
+            for (var i = 0; i < seed; i++)
             {
                 mall = serializer.Deserialize<Mall>(data);
             }
@@ -214,7 +219,7 @@ namespace Raven.Serializer.PerformanceTest
             Console.WriteLine("NewtonsoftTest Json Deserialize:{0}", sw.ElapsedMilliseconds);
         }
 
-        public static void NewtonsoftTestBson(int speed)
+        public static void NewtonsoftTestBson(int seed)
         {
             NewtsBsonSerializer serializer = new NewtsBsonSerializer();
             Mall mall = new Mall() { ID = 1, Name = "大悦城", GroupID = 135 };
@@ -222,7 +227,7 @@ namespace Raven.Serializer.PerformanceTest
             byte[] data = null;
 
             sw.Restart();
-            for (var i = 0; i < speed; i++)
+            for (var i = 0; i < seed; i++)
             {
                 data = serializer.Serialize(mall);
             }
@@ -231,7 +236,7 @@ namespace Raven.Serializer.PerformanceTest
             Console.WriteLine("NewtonsoftTest Bson Serialize:{0}", sw.ElapsedMilliseconds);
 
             sw.Restart();
-            for (var i = 0; i < speed; i++)
+            for (var i = 0; i < seed; i++)
             {
                 mall = serializer.Deserialize<Mall>(data);
             }
