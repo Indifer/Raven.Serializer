@@ -41,6 +41,18 @@ namespace Raven.Serializer.WithJil
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="type"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public object Deserialize(Type type, byte[] data)
+        {
+            var jsonString = encoding.GetString(data);
+            return JSON.Deserialize(jsonString, type);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="buffer"></param>
         /// <param name="index"></param>
@@ -50,6 +62,21 @@ namespace Raven.Serializer.WithJil
         {
             var jsonString = encoding.GetString(buffer, index, count);
             return JSON.Deserialize<T>(jsonString);
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="buffer"></param>
+        /// <param name="index"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public object Deserialize(Type type, byte[] buffer, int index, int count)
+        {
+            var jsonString = encoding.GetString(buffer, index, count);
+            return JSON.Deserialize(jsonString, type);
         }
 
         /// <summary>
@@ -67,5 +94,22 @@ namespace Raven.Serializer.WithJil
 
             return Deserialize<T>(bytes);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public object Deserialize(Type type, Stream stream)
+        {
+            byte[] bytes = new byte[stream.Length];
+            stream.Read(bytes, 0, bytes.Length);
+            // 设置当前流的位置为流的开始
+            stream.Seek(0, SeekOrigin.Begin);
+
+            return Deserialize(type, bytes);
+        }
+
     }
 }

@@ -27,10 +27,25 @@ namespace Raven.Serializer.WithNewtonsoft
         /// <summary>
         /// 
         /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public T Deserialize<T>(byte[] data)
         {
             var jsonString = encoding.GetString(data);
             return JsonConvert.DeserializeObject<T>(jsonString);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public object Deserialize(Type type, byte[] data)
+        {
+            var jsonString = encoding.GetString(data);
+            return JsonConvert.DeserializeObject(jsonString, type);
         }
 
         /// <summary>
@@ -50,6 +65,20 @@ namespace Raven.Serializer.WithNewtonsoft
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="type"></param>
+        /// <param name="buffer"></param>
+        /// <param name="index"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public object Deserialize(Type type, byte[] buffer, int index, int count)
+        {
+            var jsonString = encoding.GetString(buffer, index, count);
+            return JsonConvert.DeserializeObject(jsonString, type);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="stream"></param>
         /// <returns></returns>
@@ -61,6 +90,21 @@ namespace Raven.Serializer.WithNewtonsoft
             stream.Seek(0, SeekOrigin.Begin);
 
             return Deserialize<T>(bytes);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public object Deserialize(Type type, Stream stream)
+        {
+            byte[] bytes = new byte[stream.Length];
+            stream.Read(bytes, 0, bytes.Length);
+            // 设置当前流的位置为流的开始
+            stream.Seek(0, SeekOrigin.Begin);
+            return Deserialize(type, bytes);
         }
     }
 }

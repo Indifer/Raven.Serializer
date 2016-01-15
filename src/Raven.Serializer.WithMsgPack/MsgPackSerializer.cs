@@ -55,6 +55,18 @@ namespace Raven.Serializer.WithMsgPack
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="type"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public object Deserialize(Type type, byte[] data)
+        {
+            IMessagePackSingleObjectSerializer serializer = GetSerializer(type);
+            return serializer.UnpackSingleObject(data);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="buffer"></param>
         /// <param name="index"></param>
@@ -75,6 +87,24 @@ namespace Raven.Serializer.WithMsgPack
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="type"></param>
+        /// <param name="buffer"></param>
+        /// <param name="index"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public object Deserialize(Type type, byte[] buffer, int index, int count)
+        {
+            IMessagePackSingleObjectSerializer serializer = GetSerializer(type);
+
+            using (var byteStream = new MemoryStream(buffer, index, count))
+            {
+                return serializer.Unpack(byteStream);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="stream"></param>
         /// <returns></returns>
@@ -83,6 +113,18 @@ namespace Raven.Serializer.WithMsgPack
             Type t = typeof(T);
             IMessagePackSingleObjectSerializer serializer = GetSerializer(t);
             return ((MessagePackSerializer<T>)serializer).Unpack(stream);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public object Deserialize(Type type, Stream stream)
+        {
+            IMessagePackSingleObjectSerializer serializer = GetSerializer(type);
+            return serializer.Unpack(stream);
         }
 
         /// <summary>

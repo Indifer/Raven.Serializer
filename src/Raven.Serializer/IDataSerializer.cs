@@ -30,6 +30,14 @@ namespace Raven.Serializer
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="type"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        object Deserialize(Type type, byte[] data);
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="buffer"></param>
         /// <param name="index"></param>
@@ -40,11 +48,30 @@ namespace Raven.Serializer
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="type"></param>
+        /// <param name="buffer"></param>
+        /// <param name="index"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        object Deserialize(Type type, byte[] buffer, int index, int count);
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="stream"></param>
         /// <returns></returns>
         T Deserialize<T>(Stream stream);
-    }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="type"></param>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        object Deserialize(Type type, Stream stream);
+
+    }
 
 }
