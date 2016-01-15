@@ -34,6 +34,14 @@
             <param name="count"></param>
             <returns></returns>
         </member>
+        <member name="M:Raven.Serializer.IDataSerializer.Deserialize``1(System.IO.Stream)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
         <member name="T:Raven.Serializer.SerializerFactory">
             <summary>
             
