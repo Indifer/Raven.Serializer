@@ -15,7 +15,7 @@ namespace Raven.Serializer.WithMsgPack
     {
         private static Dictionary<Type, IMessagePackSingleObjectSerializer> msgPackserializers = new Dictionary<Type, IMessagePackSingleObjectSerializer>();
         //private static readonly Encoding encoding = Encoding.UTF8;
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -32,6 +32,19 @@ namespace Raven.Serializer.WithMsgPack
             //    serializer.Pack(byteStream, obj);
             //    return byteStream.ToArray();
             //}
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="stream"></param>
+        public void Serialize(object obj, Stream stream)
+        {
+            Type t = obj.GetType();
+            IMessagePackSingleObjectSerializer serializer = GetSerializer(t);
+
+            serializer.Pack(stream, obj);
         }
 
         /// <summary>

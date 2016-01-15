@@ -18,6 +18,13 @@ namespace Raven.Serializer
         /// <param name="obj"></param>
         /// <returns></returns>
         byte[] Serialize(object obj);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="stream"></param>
+        void Serialize(object obj, Stream stream);
 
         /// <summary>
         /// 

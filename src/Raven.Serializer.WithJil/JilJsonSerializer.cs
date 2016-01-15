@@ -29,6 +29,17 @@ namespace Raven.Serializer.WithJil
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="stream"></param>
+        public void Serialize(object obj, Stream stream)
+        {
+            var data = Serialize(obj);
+            stream.Write(data, 0, data.Length);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="data"></param>
         /// <returns></returns>

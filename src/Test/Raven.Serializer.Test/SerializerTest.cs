@@ -8,7 +8,7 @@ namespace Raven.Serializer.Test
     public class SerializerTest
     {
         [TestMethod]
-        public void MsgPackTest()
+        public void MsgPackSerialize()
         {
             string val = "abc个";
             byte[] buffer = new byte[7];
@@ -22,10 +22,34 @@ namespace Raven.Serializer.Test
 
             IDataSerializer serializer = SerializerFactory.Create(SerializerType.MsgPack);
             
-            var data = serializer.Serialize(val);
+            byte[] data = serializer.Serialize(val);
             CollectionAssert.AreEqual(data, buffer);
 
-            var val_res = serializer.Deserialize<string>(buffer);
+            string val_res = serializer.Deserialize<string>(buffer);
+            Assert.AreEqual(val, val_res);
+
+            //Assert.AreEqual(buffer, data);
+        }
+
+        [TestMethod]
+        public void MsgPackSerializeStream()
+        {
+            string val = "abc个";
+            byte[] buffer = new byte[7];
+            buffer[0] = 166;
+            buffer[1] = 97;
+            buffer[2] = 98;
+            buffer[3] = 99;
+            buffer[4] = 228;
+            buffer[5] = 184;
+            buffer[6] = 170;
+
+            IDataSerializer serializer = SerializerFactory.Create(SerializerType.MsgPack);
+
+            byte[] data = serializer.Serialize(val);
+            CollectionAssert.AreEqual(data, buffer);
+
+            string val_res = serializer.Deserialize<string>(buffer);
             Assert.AreEqual(val, val_res);
 
             //Assert.AreEqual(buffer, data);

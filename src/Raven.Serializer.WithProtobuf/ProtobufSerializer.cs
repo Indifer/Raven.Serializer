@@ -27,6 +27,16 @@ namespace Raven.Serializer.WithProtobuf
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="stream"></param>
+        public void Serialize(object obj, Stream stream)
+        {
+            ProtoBuf.Serializer.NonGeneric.Serialize(stream, obj);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public T Deserialize<T>(byte[] data)
         {
             using (var ms = new MemoryStream(data))
