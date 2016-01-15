@@ -68,5 +68,21 @@ namespace Raven.Serializer.WithNewtonsoft
                 }
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public T Deserialize<T>(Stream stream)
+        {
+            using (BsonReader reader = new BsonReader(stream))
+            {
+                //serializer.DateFormatString = "yyyy-MM-dd HH:mm:ss";                    
+                T obj = serializer.Deserialize<T>(reader);
+                return obj;
+            }
+        }
     }
 }

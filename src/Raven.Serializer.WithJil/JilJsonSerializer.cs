@@ -1,6 +1,7 @@
 ﻿using Jil;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,7 +42,7 @@ namespace Raven.Serializer.WithJil
         /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="data"></param>
+        /// <param name="buffer"></param>
         /// <param name="index"></param>
         /// <param name="count"></param>
         /// <returns></returns>
@@ -49,6 +50,22 @@ namespace Raven.Serializer.WithJil
         {
             var jsonString = encoding.GetString(buffer, index, count);
             return JSON.Deserialize<T>(jsonString);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public T Deserialize<T>(Stream stream)
+        {
+            byte[] bytes = new byte[stream.Length];
+            stream.Read(bytes, 0, bytes.Length);
+            // 设置当前流的位置为流的开始
+            stream.Seek(0, SeekOrigin.Begin);
+
+            return Deserialize<T>(bytes);
         }
     }
 }

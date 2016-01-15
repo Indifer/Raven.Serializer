@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,14 @@ namespace Raven.Serializer
         /// <param name="count"></param>
         /// <returns></returns>
         T Deserialize<T>(byte[] buffer, int index, int count);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        T Deserialize<T>(Stream stream);
     }
 
 

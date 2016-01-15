@@ -75,6 +75,19 @@ namespace Raven.Serializer.WithMsgPack
         /// <summary>
         /// 
         /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public T Deserialize<T>(Stream stream)
+        {
+            Type t = typeof(T);
+            IMessagePackSingleObjectSerializer serializer = GetSerializer(t);
+            return ((MessagePackSerializer<T>)serializer).Unpack(stream);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
         private IMessagePackSingleObjectSerializer GetSerializer(Type t)

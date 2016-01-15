@@ -50,5 +50,16 @@ namespace Raven.Serializer.WithProtobuf
                 return ProtoBuf.Serializer.Deserialize<T>(ms);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public T Deserialize<T>(Stream stream)
+        {
+            return ProtoBuf.Serializer.Deserialize<T>(stream);
+        }
     }
 }
