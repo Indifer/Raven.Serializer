@@ -16,6 +16,13 @@
             <param name="obj"></param>
             <returns></returns>
         </member>
+        <member name="M:Raven.Serializer.WithNewtonsoft.NewtsBsonSerializer.Serialize(System.Object,System.IO.Stream)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <param name="stream"></param>
+        </member>
         <member name="M:Raven.Serializer.WithNewtonsoft.NewtsBsonSerializer.Deserialize``1(System.Byte[])">
             <summary>
             
@@ -77,6 +84,13 @@
             <summary>
             
             </summary>
+        </member>
+        <member name="M:Raven.Serializer.WithNewtonsoft.NewtsJsonSerializer.Serialize(System.Object,System.IO.Stream)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <param name="stream"></param>
         </member>
         <member name="M:Raven.Serializer.WithNewtonsoft.NewtsJsonSerializer.Deserialize``1(System.Byte[])">
             <summary>

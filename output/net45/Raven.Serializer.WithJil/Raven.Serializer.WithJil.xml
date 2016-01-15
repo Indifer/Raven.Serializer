@@ -16,6 +16,13 @@
             <param name="obj"></param>
             <returns></returns>
         </member>
+        <member name="M:Raven.Serializer.WithJil.JilJsonSerializer.Serialize(System.Object,System.IO.Stream)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <param name="stream"></param>
+        </member>
         <member name="M:Raven.Serializer.WithJil.JilJsonSerializer.Deserialize``1(System.Byte[])">
             <summary>
             
