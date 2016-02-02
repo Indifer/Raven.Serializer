@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Raven.Serializer.WithJil</id>
+        <version>1.0.0</version>
+        <authors>liang</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Raven.Serializer.WithMsgPack</description>
+        <dependencies>
+            <dependency id="Jil" version="2.12.1" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\output\net45\Raven.Serializer.WithJil\Raven.Serializer.WithJil.dll" target="lib\net45\Raven.Serializer.WithJil.dll" />
+        <file src="..\output\net45\Raven.Serializer.WithJil\Raven.Serializer.WithJil.pdb" target="lib\net45\Raven.Serializer.WithJil.pdb" />
+        <file src="..\output\net45\Raven.Serializer.WithJil\Raven.Serializer.WithJil.xml" target="lib\net45\Raven.Serializer.WithJil.xml" />
+    </files>
+</package>
