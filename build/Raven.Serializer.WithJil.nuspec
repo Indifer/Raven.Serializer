@@ -8,6 +8,7 @@
         <description>Raven.Serializer.WithMsgPack</description>
         <dependencies>
             <dependency id="Jil" version="2.12.1" />
+            <dependency id="Raven.Serializer" version="1.0.1" />
         </dependencies>
     </metadata>
     <files>

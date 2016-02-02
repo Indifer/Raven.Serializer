@@ -8,6 +8,7 @@
         <description>Raven.Serializer.WithMsgPack</description>
         <dependencies>
             <dependency id="MsgPack.Cli" version="0.6.7" />
+            <dependency id="Raven.Serializer" version="1.0.1" />
         </dependencies>
     </metadata>
     <files>
