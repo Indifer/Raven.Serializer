@@ -61,6 +61,8 @@ namespace Raven.Serializer.PerformanceTest
         public string Name { get; set; }
 
         public DateTime Date { get; set; }
+
+        public DateTime? Date2 { get; set; }
     }
 
 }

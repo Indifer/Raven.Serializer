@@ -15,6 +15,17 @@ namespace Raven.Serializer.WithJil
     {
         private static readonly Encoding encoding = Encoding.UTF8;
 
+        private Options options = Options.ISO8601;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="options"></param>
+        public void SetOptions(Options options)
+        {
+            this.options = options;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -22,7 +33,7 @@ namespace Raven.Serializer.WithJil
         /// <returns></returns>
         public byte[] Serialize(object obj)
         {
-            var jsonString = JSON.Serialize(obj);
+            var jsonString = JSON.Serialize(obj, options);
             return encoding.GetBytes(jsonString);
         }
 
@@ -46,7 +57,7 @@ namespace Raven.Serializer.WithJil
         public T Deserialize<T>(byte[] data)
         {
             var jsonString = encoding.GetString(data);
-            return JSON.Deserialize<T>(jsonString);
+            return JSON.Deserialize<T>(jsonString, options);
         }
 
         /// <summary>
@@ -58,7 +69,7 @@ namespace Raven.Serializer.WithJil
         public object Deserialize(Type type, byte[] data)
         {
             var jsonString = encoding.GetString(data);
-            return JSON.Deserialize(jsonString, type);
+            return JSON.Deserialize(jsonString, type, options);
         }
 
         /// <summary>
@@ -72,7 +83,7 @@ namespace Raven.Serializer.WithJil
         public T Deserialize<T>(byte[] buffer, int index, int count)
         {
             var jsonString = encoding.GetString(buffer, index, count);
-            return JSON.Deserialize<T>(jsonString);
+            return JSON.Deserialize<T>(jsonString, options);
         }
 
 
@@ -87,7 +98,7 @@ namespace Raven.Serializer.WithJil
         public object Deserialize(Type type, byte[] buffer, int index, int count)
         {
             var jsonString = encoding.GetString(buffer, index, count);
-            return JSON.Deserialize(jsonString, type);
+            return JSON.Deserialize(jsonString, type, options);
         }
 
         /// <summary>

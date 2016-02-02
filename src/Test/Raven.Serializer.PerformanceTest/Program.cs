@@ -1,4 +1,5 @@
-﻿using Raven.Serializer.WithJil;
+﻿using Jil;
+using Raven.Serializer.WithJil;
 using Raven.Serializer.WithMsgPack;
 using Raven.Serializer.WithNewtonsoft;
 using Raven.Serializer.WithProtobuf;
@@ -48,6 +49,13 @@ namespace Raven.Serializer.PerformanceTest
                 }
             };
             int seed = 500000;
+
+
+            //var res = JSON.Serialize(mall, Options.ISO8601);
+            //Console.WriteLine(res);
+            //var mall2 = JSON.Deserialize<Mall>(res);
+            //mall2.User.Date = mall.User.Date.ToLocalTime();
+
 
             Console.WriteLine("序列化数据次数：{0:N0}", seed);
 
