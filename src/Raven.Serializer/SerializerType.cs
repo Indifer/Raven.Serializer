@@ -18,18 +18,28 @@ namespace Raven.Serializer
         /// <summary>
         /// 
         /// </summary>
-        MsgPack,
+        MsgPack = 2,
         /// <summary>
         /// 
         /// </summary>
-        Protobuf,
+        Protobuf = 3,
         /// <summary>
         /// 
         /// </summary>
-        NewtonsoftJson,
+        NewtonsoftJson = 4,
         /// <summary>
         /// 
         /// </summary>
-        NewtonsoftBson,
+        NewtonsoftBson = 5,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        //MongoDBJson = 6,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        MongoDBBson = 7,
     }
 }

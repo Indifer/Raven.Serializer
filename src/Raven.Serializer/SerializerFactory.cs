@@ -21,7 +21,8 @@ namespace Raven.Serializer
             { Serializer.SerializerType.MsgPack , new[] {"Raven.Serializer.WithMsgPack","MsgPackSerializer" }},
             { Serializer.SerializerType.NewtonsoftBson ,new[] { "Raven.Serializer.WithNewtonsoft","NewtsBsonSerializer" }},
             { Serializer.SerializerType.NewtonsoftJson ,new[] { "Raven.Serializer.WithNewtonsoft","NewtsJsonSerializer" }},
-            { Serializer.SerializerType.Protobuf , new[] {"Raven.Serializer.WithProtobuf","ProtobufSerializer" }}
+            { Serializer.SerializerType.Protobuf , new[] {"Raven.Serializer.WithProtobuf","ProtobufSerializer" }},
+            { Serializer.SerializerType.MongoDBBson ,new[] { "Raven.Serializer.WithMongoDBBson", "MongoBsonSerializer" }},
         };
 
         /// <summary>

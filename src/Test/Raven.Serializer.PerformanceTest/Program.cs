@@ -48,7 +48,7 @@ namespace Raven.Serializer.PerformanceTest
                     Name = "ggsgshahsahsdha"
                 }
             };
-            int seed = 500000;
+            int seed = 100000;
 
 
             //var res = JSON.Serialize(mall, Options.ISO8601);
@@ -72,7 +72,10 @@ namespace Raven.Serializer.PerformanceTest
             Factory(seed, SerializerType.NewtonsoftBson, mall);
 
             SpinWait.SpinUntil(() => false, 500);
-            Factory(seed, SerializerType.NewtonsoftJson, mall);
+            Factory(seed, SerializerType.NewtonsoftJson, mall);            
+
+            SpinWait.SpinUntil(() => false, 500);
+            Factory(seed, SerializerType.MongoDBBson, mall);
 
             Console.WriteLine("over......");
 

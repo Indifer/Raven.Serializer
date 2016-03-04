@@ -36,6 +36,10 @@
       <HintPath>..\..\packages\Jil.2.12.1\lib\net45\Jil.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.2.0.262, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MongoDB.Bson.2.2.0\lib\net45\MongoDB.Bson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MsgPack, Version=0.6.0.0, Culture=neutral, PublicKeyToken=a2625990d5dc0167, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MsgPack.Cli.0.6.7\lib\net45\MsgPack.dll</HintPath>
       <Private>True</Private>
@@ -69,6 +73,10 @@
     <ProjectReference Include="..\..\Raven.Serializer.WithJil\Raven.Serializer.WithJil.csproj">
       <Project>{6d8795df-f0aa-4dd3-ab4e-015d44b23c2f}</Project>
       <Name>Raven.Serializer.WithJil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Raven.Serializer.WithMongoDBBson\Raven.Serializer.WithMongoDBBson.csproj">
+      <Project>{9c3ac34f-e62b-4f04-82eb-e32ad614b153}</Project>
+      <Name>Raven.Serializer.WithMongoDBBson</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Raven.Serializer.WithMsgPack\Raven.Serializer.WithMsgPack.csproj">
       <Project>{39523607-3427-4a9f-93af-8d0169cfe6a7}</Project>

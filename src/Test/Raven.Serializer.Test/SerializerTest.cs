@@ -29,7 +29,32 @@ namespace Raven.Serializer.Test
             string val_res = serializer.Deserialize<string>(buffer);
             Assert.AreEqual(val, val_res);
 
-            //Assert.AreEqual(buffer, data);
+            Mall mall = new Mall()
+            {
+                ID = 1,
+                Name = "大悦城",
+                GroupID = 135,
+                AAAAAAAAAA = "aaaa",
+                BBBBBBBBBB = "BBBB",
+                CCCCCCCCCC = "hygfjrt7kuylkhgliu;oi;yhdhtfjhsj",
+                D = "kuykj687jrstskhgfk",
+                EEEEEEEEEE = "jhlhlgjhkuykjuyt",
+                F = "djsgfjdjg",
+                G = "fdsgasdgs",
+                HHHHHHHHHH = "hgfdhergfdhs",
+                I = "fdjnhterjrgtas",
+                J = "fdhs5htrjgfdfdg",
+                User = new User()
+                {
+                    Date = DateTime.Now,
+                    ID = 132414,
+                    Name = "ggsgshahsahsdha"
+                }
+            };
+
+            var json = serializer.Serialize(mall);
+            var mall2 = serializer.Deserialize<Mall>(json);
+            Assert.AreEqual(mall.Name, mall2.Name);
         }
 
         [TestMethod]
@@ -69,6 +94,39 @@ namespace Raven.Serializer.Test
 
             var val_res = serializer.Deserialize<string>(data);
             Assert.AreEqual(val, val_res);            
+
+            Mall mall = new Mall()
+            {
+                ID = 1,
+                Name = "大悦城",
+                GroupID = 135,
+                AAAAAAAAAA = "aaaa",
+                BBBBBBBBBB = "BBBB",
+                CCCCCCCCCC = "hygfjrt7kuylkhgliu;oi;yhdhtfjhsj",
+                D = "kuykj687jrstskhgfk",
+                EEEEEEEEEE = "jhlhlgjhkuykjuyt",
+                F = "djsgfjdjg",
+                G = "fdsgasdgs",
+                HHHHHHHHHH = "hgfdhergfdhs",
+                I = "fdjnhterjrgtas",
+                J = "fdhs5htrjgfdfdg",
+                User = new User()
+                {
+                    Date = DateTime.Now,
+                    ID = 132414,
+                    Name = "ggsgshahsahsdha"
+                }
+            };
+
+            var json = serializer.Serialize(mall);
+            var mall2 = serializer.Deserialize<Mall>(json);
+            Assert.AreEqual(mall.Name, mall2.Name);
+        }
+
+        [TestMethod]
+        public void MongoDBTest()
+        {
+            IDataSerializer serializer = SerializerFactory.Create(SerializerType.MongoDBBson);
 
             Mall mall = new Mall()
             {
