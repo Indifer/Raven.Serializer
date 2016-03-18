@@ -17,6 +17,7 @@ namespace Raven.Serializer.PerformanceTest
 
         
         public string Name { get; set; }
+        public DateTime Date { get; set; }
 
         /// <summary>
         /// 集团商场id

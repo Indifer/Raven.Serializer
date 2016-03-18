@@ -29,6 +29,7 @@ namespace Raven.Serializer.PerformanceTest
             Mall mall = new Mall()
             {
                 ID = 1,
+                Date = DateTime.Now,
                 Name = "大悦城",
                 GroupID = 135,
                 AAAAAAAAAA = "aaaa",
@@ -50,6 +51,11 @@ namespace Raven.Serializer.PerformanceTest
             };
             int seed = 100000;
 
+            IDataSerializer serializer1 = SerializerFactory.Create(SerializerType.NewtonsoftJson);
+            IDataSerializer serializer2 = SerializerFactory.Create(SerializerType.Jil);
+
+            var data = serializer2.Serialize(mall);
+            var mall2 = serializer1.Deserialize<Mall>(data);
 
             //var res = JSON.Serialize(mall, Options.ISO8601);
             //Console.WriteLine(res);
@@ -72,7 +78,7 @@ namespace Raven.Serializer.PerformanceTest
             Factory(seed, SerializerType.NewtonsoftBson, mall);
 
             SpinWait.SpinUntil(() => false, 500);
-            Factory(seed, SerializerType.NewtonsoftJson, mall);            
+            Factory(seed, SerializerType.NewtonsoftJson, mall);
 
             SpinWait.SpinUntil(() => false, 500);
             Factory(seed, SerializerType.MongoDBBson, mall);
