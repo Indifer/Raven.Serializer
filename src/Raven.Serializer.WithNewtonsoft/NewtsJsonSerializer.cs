@@ -14,20 +14,14 @@ namespace Raven.Serializer.WithNewtonsoft
     public class NewtsJsonSerializer : IDataSerializer
     {
         private static readonly Encoding encoding = Encoding.UTF8;
-        public static JsonSerializerSettings settings = new JsonSerializerSettings();
-
-        public NewtsJsonSerializer()
-        {
-            //settings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
-            settings.Formatting = Formatting.None;
-        }
-
+        public static JsonSerializerSettings Settings = new JsonSerializerSettings() { Formatting = Formatting.None };
+        
         /// <summary>
         /// 
         /// </summary>
         public byte[] Serialize(object obj)
         {
-            var jsonString = JsonConvert.SerializeObject(obj, settings);
+            var jsonString = JsonConvert.SerializeObject(obj, Settings);
             return encoding.GetBytes(jsonString);
         }
 
@@ -51,7 +45,7 @@ namespace Raven.Serializer.WithNewtonsoft
         public T Deserialize<T>(byte[] data)
         {
             var jsonString = encoding.GetString(data);
-            return JsonConvert.DeserializeObject<T>(jsonString, settings);
+            return JsonConvert.DeserializeObject<T>(jsonString, Settings);
         }
 
         /// <summary>
@@ -63,7 +57,7 @@ namespace Raven.Serializer.WithNewtonsoft
         public object Deserialize(Type type, byte[] data)
         {
             var jsonString = encoding.GetString(data);
-            return JsonConvert.DeserializeObject(jsonString, type, settings);
+            return JsonConvert.DeserializeObject(jsonString, type, Settings);
         }
 
         /// <summary>
@@ -77,7 +71,7 @@ namespace Raven.Serializer.WithNewtonsoft
         public T Deserialize<T>(byte[] buffer, int index, int count)
         {
             var jsonString = encoding.GetString(buffer, index, count);
-            return JsonConvert.DeserializeObject<T>(jsonString, settings);
+            return JsonConvert.DeserializeObject<T>(jsonString, Settings);
         }
 
         /// <summary>
@@ -91,7 +85,7 @@ namespace Raven.Serializer.WithNewtonsoft
         public object Deserialize(Type type, byte[] buffer, int index, int count)
         {
             var jsonString = encoding.GetString(buffer, index, count);
-            return JsonConvert.DeserializeObject(jsonString, type, settings);
+            return JsonConvert.DeserializeObject(jsonString, type, Settings);
         }
 
         /// <summary>
