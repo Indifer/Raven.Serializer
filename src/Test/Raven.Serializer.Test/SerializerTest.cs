@@ -55,6 +55,9 @@ namespace Raven.Serializer.Test
             var json = serializer.Serialize(mall);
             var mall2 = serializer.Deserialize<Mall>(json);
             Assert.AreEqual(mall.Name, mall2.Name);
+
+
+            var user = serializer.Deserialize<User>(json);
         }
 
         [TestMethod]
@@ -154,6 +157,17 @@ namespace Raven.Serializer.Test
             var json = serializer.Serialize(mall);
             var mall2 = serializer.Deserialize<Mall>(json);
             Assert.AreEqual(mall.Name, mall2.Name);
+        }
+
+        [TestMethod]
+        public void NewtonsoftJsonTest()
+        {
+            ResponseModel model = new ResponseModel();
+            string json = Newtonsoft.Json.JsonConvert.SerializeObject(model);
+
+            ResponseModel_2 model2 = new ResponseModel_2();
+            json = Newtonsoft.Json.JsonConvert.SerializeObject(model2);
+
         }
     }
 }

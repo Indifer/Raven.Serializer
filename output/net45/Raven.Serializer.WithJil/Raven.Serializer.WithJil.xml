@@ -9,12 +9,6 @@
             
             </summary>
         </member>
-        <member name="M:Raven.Serializer.WithJil.JilJsonSerializer.SetOptions(Jil.Options)">
-            <summary>
-            
-            </summary>
-            <param name="options"></param>
-        </member>
         <member name="M:Raven.Serializer.WithJil.JilJsonSerializer.Serialize(System.Object)">
             <summary>
             

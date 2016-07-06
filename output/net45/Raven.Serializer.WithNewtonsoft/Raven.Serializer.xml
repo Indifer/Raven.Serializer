@@ -130,5 +130,10 @@
             
             </summary>
         </member>
+        <member name="F:Raven.Serializer.SerializerType.MongoDBBson">
+            <summary>
+            
+            </summary>
+        </member>
     </members>
 </doc>
