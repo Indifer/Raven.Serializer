@@ -1,4 +1,5 @@
 ﻿using Jil;
+using MsgPack.Serialization;
 using Raven.Serializer.WithJil;
 using Raven.Serializer.WithMsgPack;
 using Raven.Serializer.WithNewtonsoft;
@@ -49,6 +50,7 @@ namespace Raven.Serializer.PerformanceTest
                     Name = "ggsgshahsahsdha"
                 }
             };
+            
             int seed = 100000;
 
             IDataSerializer serializer1 = SerializerFactory.Create(SerializerType.NewtonsoftJson);
@@ -69,10 +71,10 @@ namespace Raven.Serializer.PerformanceTest
             Factory(seed, SerializerType.Jil, mall);
 
             SpinWait.SpinUntil(() => false, 500);
-            Factory(seed, SerializerType.MsgPack, mall);
+            MsgPackTest(seed, mall);
 
             SpinWait.SpinUntil(() => false, 500);
-            MsgPackTest(seed, mall);
+            Factory(seed, SerializerType.MsgPack, mall);
 
             SpinWait.SpinUntil(() => false, 500);
             Factory(seed, SerializerType.NewtonsoftBson, mall);
@@ -159,7 +161,7 @@ namespace Raven.Serializer.PerformanceTest
         public static void MsgPackTest(int seed, Mall mall)
         {
             //MsgPackSerializer serializer = new MsgPackSerializer();
-            var serializer = MsgPack.Serialization.MessagePackSerializer.Get<Mall>();
+            IMessagePackSingleObjectSerializer serializer = MsgPack.Serialization.MessagePackSerializer.Get(typeof(Mall));
             Stopwatch sw = new Stopwatch();
             byte[] data = null;
 
@@ -176,7 +178,8 @@ namespace Raven.Serializer.PerformanceTest
             sw.Restart();
             for (var i = 0; i < seed; i++)
             {
-                mall = serializer.UnpackSingleObject(data);
+                //mall = serializer.UnpackSingleObject(data);
+                mall = (Mall)serializer.UnpackSingleObject(data);
                 //mall = serializer.Deserialize<Mall>(data);
             }
             sw.Stop();

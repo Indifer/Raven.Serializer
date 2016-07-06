@@ -13,7 +13,9 @@ namespace Raven.Serializer.WithMsgPack
     /// </summary>
     public class MsgPackSerializer : IDataSerializer
     {
-        private static Dictionary<Type, IMessagePackSingleObjectSerializer> msgPackserializers = new Dictionary<Type, IMessagePackSingleObjectSerializer>();
+        //private static Dictionary<string, IMessagePackSingleObjectSerializer> msgPackserializers = new Dictionary<string, IMessagePackSingleObjectSerializer>();
+        //MessagePackSerializer<T>
+        //private static object _obj = new object();
         //private static readonly Encoding encoding = Encoding.UTF8;
 
         /// <summary>
@@ -33,7 +35,7 @@ namespace Raven.Serializer.WithMsgPack
             //    return byteStream.ToArray();
             //}
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -139,7 +141,6 @@ namespace Raven.Serializer.WithMsgPack
             IMessagePackSingleObjectSerializer serializer = GetSerializer(type);
             return serializer.Unpack(stream);
         }
-
         /// <summary>
         /// 
         /// </summary>
@@ -147,17 +148,40 @@ namespace Raven.Serializer.WithMsgPack
         /// <returns></returns>
         private IMessagePackSingleObjectSerializer GetSerializer(Type t)
         {
-            IMessagePackSingleObjectSerializer serializer = null;
-            if (!msgPackserializers.ContainsKey(t))
-            {
-                serializer = MessagePackSerializer.Get(t);
-                msgPackserializers[t] = serializer;
-            }
-            else
-            {
-                serializer = msgPackserializers[t];
-            }
-            return serializer;
+            return MessagePackSerializer.Get(t);
         }
+
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="t"></param>
+        ///// <returns></returns>
+        //private IMessagePackSingleObjectSerializer GetSerializer(Type t)
+        //{
+        //    IMessagePackSingleObjectSerializer serializer = null;
+        //    var key = GetKey(t);
+        //    if (!msgPackserializers.ContainsKey(key))
+        //    {
+        //        lock (_obj)
+        //        {
+        //            if (!msgPackserializers.ContainsKey(key))
+        //            {
+        //                serializer = MessagePackSerializer.Get(t);
+        //                msgPackserializers[key] = serializer;
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        serializer = msgPackserializers[key];
+        //    }
+        //    return serializer;
+        //}
+
+        private static string GetKey(Type t)
+        {
+            return t.AssemblyQualifiedName;
+        }
+
     }
 }
