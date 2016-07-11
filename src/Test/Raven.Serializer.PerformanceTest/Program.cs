@@ -27,6 +27,9 @@ namespace Raven.Serializer.PerformanceTest
             //}
 
 
+            string[] arr = new string[] { "UID", "ProjectType", "Token", "CreateTime", "Timeout" };
+            
+
             Mall mall = new Mall()
             {
                 ID = 1,

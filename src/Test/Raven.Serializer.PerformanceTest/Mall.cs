@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
+using MsgPack.Serialization.CollectionSerializers;
 
 namespace Raven.Serializer.PerformanceTest
 {
@@ -15,7 +16,7 @@ namespace Raven.Serializer.PerformanceTest
         /// </summary>
         public long ID { get; set; }
 
-        
+
         public string Name { get; set; }
         public DateTime Date { get; set; }
 
@@ -43,7 +44,7 @@ namespace Raven.Serializer.PerformanceTest
         public string I { get; set; }
 
         public string J { get; set; }
-        
+
         public User User { get; set; }
 
         /// <summary>
@@ -55,14 +56,57 @@ namespace Raven.Serializer.PerformanceTest
         }
     }
 
+    //[DataContract]
     public class User
     {
+        //[DataMember(Order = 0)]
         public long ID { get; set; }
 
+        //[DataMember(Order = 1)]
         public string Name { get; set; }
-        
+
+        //[DataMember(Order = 2)]
         public DateTime Date { get; set; }
-        
+
+        //[DataMember(Order = 3)]
+        public long A { get; set; }
+
+        //[DataMember(Order = 4)]
+        public DateTime? Date2 { get; set; }
     }
 
+
+    //[DataContract]
+    public class User1
+    {
+        //[DataMember(Order = 0)]
+        public long ID { get; set; }
+
+        //[DataMember(Order = 1)]
+        public string Name { get; set; }
+
+        //[DataMember(Order = 2)]
+        public DateTime Date { get; set; }
+
+        //[DataMember(Order = 3)]
+        //public long A { get; set; }
+
+        //[DataMember(Order = 4)]
+        public DateTime? Date2 { get; set; }
+    }
+
+
+    //[DataContract]
+    public class User2
+    {
+        //[DataMember(Order = 0)]
+        public long ID { get; set; }
+
+        //[DataMember(Order = 2)]
+        public DateTime Date { get; set; }
+        
+        //[DataMember(Order = 4)]
+        public DateTime? Date2 { get; set; }
+
+    }
 }

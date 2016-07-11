@@ -14,9 +14,9 @@ namespace Raven.Serializer.WithMsgPack
     public class MsgPackSerializer : IDataSerializer
     {
         //private static Dictionary<string, IMessagePackSingleObjectSerializer> msgPackserializers = new Dictionary<string, IMessagePackSingleObjectSerializer>();
-        //MessagePackSerializer<T>
         //private static object _obj = new object();
         //private static readonly Encoding encoding = Encoding.UTF8;
+        public static SerializationContext Context = new SerializationContext() { SerializationMethod = SerializationMethod.Map };        
 
         /// <summary>
         /// 
@@ -60,11 +60,7 @@ namespace Raven.Serializer.WithMsgPack
             Type t = typeof(T);
             IMessagePackSingleObjectSerializer serializer = GetSerializer(t);
 
-            return ((MessagePackSerializer<T>)serializer).UnpackSingleObject(data);
-            //using (var byteStream = new MemoryStream(data))
-            //{
-            //    return ((MessagePackSerializer<T>)serializer).Unpack(byteStream);
-            //}
+            return (T)serializer.UnpackSingleObject(data);
         }
 
         /// <summary>
@@ -94,7 +90,7 @@ namespace Raven.Serializer.WithMsgPack
 
             using (var byteStream = new MemoryStream(buffer, index, count))
             {
-                return ((MessagePackSerializer<T>)serializer).Unpack(byteStream);
+                return (T)serializer.Unpack(byteStream);
             }
 
         }
@@ -127,7 +123,7 @@ namespace Raven.Serializer.WithMsgPack
         {
             Type t = typeof(T);
             IMessagePackSingleObjectSerializer serializer = GetSerializer(t);
-            return ((MessagePackSerializer<T>)serializer).Unpack(stream);
+            return (T)serializer.Unpack(stream);
         }
 
         /// <summary>
@@ -141,6 +137,7 @@ namespace Raven.Serializer.WithMsgPack
             IMessagePackSingleObjectSerializer serializer = GetSerializer(type);
             return serializer.Unpack(stream);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -148,35 +145,8 @@ namespace Raven.Serializer.WithMsgPack
         /// <returns></returns>
         private IMessagePackSingleObjectSerializer GetSerializer(Type t)
         {
-            return MessagePackSerializer.Get(t);
+            return MessagePackSerializer.Get(t, Context);
         }
-
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="t"></param>
-        ///// <returns></returns>
-        //private IMessagePackSingleObjectSerializer GetSerializer(Type t)
-        //{
-        //    IMessagePackSingleObjectSerializer serializer = null;
-        //    var key = GetKey(t);
-        //    if (!msgPackserializers.ContainsKey(key))
-        //    {
-        //        lock (_obj)
-        //        {
-        //            if (!msgPackserializers.ContainsKey(key))
-        //            {
-        //                serializer = MessagePackSerializer.Get(t);
-        //                msgPackserializers[key] = serializer;
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        serializer = msgPackserializers[key];
-        //    }
-        //    return serializer;
-        //}
 
         private static string GetKey(Type t)
         {

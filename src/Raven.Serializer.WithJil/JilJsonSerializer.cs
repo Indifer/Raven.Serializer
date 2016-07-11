@@ -15,7 +15,7 @@ namespace Raven.Serializer.WithJil
     {
         private static readonly Encoding encoding = Encoding.UTF8;
 
-        public static Options Settings = Options.ISO8601;
+        public static Options Settings = Options.Utc;
         
         /// <summary>
         /// 

@@ -22,12 +22,12 @@ namespace Raven.Serializer.Test
             buffer[6] = 170;
 
             IDataSerializer serializer = SerializerFactory.Create(SerializerType.MsgPack);
-            
-            byte[] data = serializer.Serialize(val);
-            CollectionAssert.AreEqual(data, buffer);
 
-            string val_res = serializer.Deserialize<string>(buffer);
-            Assert.AreEqual(val, val_res);
+            //byte[] data = serializer.Serialize(val);
+            //CollectionAssert.AreEqual(data, buffer);
+
+            //string val_res = serializer.Deserialize<string>(buffer);
+            //Assert.AreEqual(val, val_res);
 
             Mall mall = new Mall()
             {
@@ -57,7 +57,14 @@ namespace Raven.Serializer.Test
             Assert.AreEqual(mall.Name, mall2.Name);
 
 
-            var user = serializer.Deserialize<User>(json);
+            User user = new User() { Date = DateTime.Now, Date2 = DateTime.Now, ID = 1243321, Name = "ggsgdhddfhfdhdsg", A = 55555 };
+            json = serializer.Serialize(user);
+            var user2 = serializer.Deserialize<User2>(json);
+
+
+            User1 user1 = new User1() { Date = DateTime.Now, Date2 = DateTime.Now, ID = 1243321, Name = "ggsgdhddfhfdhdsg" };
+            json = serializer.Serialize(user1);
+            user2 = serializer.Deserialize<User2>(json);
         }
 
         [TestMethod]
@@ -96,7 +103,7 @@ namespace Raven.Serializer.Test
             //CollectionAssert.AreEqual(data, buffer);
 
             var val_res = serializer.Deserialize<string>(data);
-            Assert.AreEqual(val, val_res);            
+            Assert.AreEqual(val, val_res);
 
             Mall mall = new Mall()
             {
