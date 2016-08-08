@@ -2,6 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MsgPack.Serialization;
 using Raven.Serializer.PerformanceTest;
+using Jil;
+using System.Text;
 
 namespace Raven.Serializer.Test
 {
@@ -131,6 +133,15 @@ namespace Raven.Serializer.Test
             var json = serializer.Serialize(mall);
             var mall2 = serializer.Deserialize<Mall>(json);
             Assert.AreEqual(mall.Name, mall2.Name);
+
+
+            serializer.Serialize(mall);
+            Encoding encoding = Encoding.UTF8;
+            var res = encoding.GetString(data);
+            var res2 = JSON.Serialize(mall);
+            var res3 = JSON.Deserialize<string>(res2, Options.Utc);
+            Assert.AreEqual(res, res3);
+
         }
 
         [TestMethod]

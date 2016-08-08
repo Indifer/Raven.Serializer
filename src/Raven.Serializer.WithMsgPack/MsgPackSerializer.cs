@@ -147,11 +147,6 @@ namespace Raven.Serializer.WithMsgPack
         {
             return MessagePackSerializer.Get(t, Context);
         }
-
-        private static string GetKey(Type t)
-        {
-            return t.AssemblyQualifiedName;
-        }
-
+        
     }
 }

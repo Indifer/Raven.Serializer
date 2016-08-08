@@ -11,12 +11,13 @@ namespace Raven.Serializer.WithJil
     /// <summary>
     /// 
     /// </summary>
-    public class JilJsonSerializer : IDataSerializer
+    public class JilJsonSerializer : BasicDataSerializer, IDataSerializer
     {
-        private static readonly Encoding encoding = Encoding.UTF8;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public static Options Settings = Options.Utc;
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -24,6 +25,12 @@ namespace Raven.Serializer.WithJil
         /// <returns></returns>
         public byte[] Serialize(object obj)
         {
+            byte[] res = null;
+            if (TrySerialize(obj, out res))
+            {
+                return res;
+            }
+
             var jsonString = JSON.Serialize(obj, Settings);
             return encoding.GetBytes(jsonString);
         }
@@ -47,6 +54,13 @@ namespace Raven.Serializer.WithJil
         /// <returns></returns>
         public T Deserialize<T>(byte[] data)
         {
+            object res;
+            var type = typeof(T);
+            if (TryDeserialize(type, data, out res))
+            {
+                return (T)res;
+            }
+
             var jsonString = encoding.GetString(data);
             return JSON.Deserialize<T>(jsonString, Settings);
         }
@@ -59,6 +73,12 @@ namespace Raven.Serializer.WithJil
         /// <returns></returns>
         public object Deserialize(Type type, byte[] data)
         {
+            object res;
+            if (TryDeserialize(type, data, out res))
+            {
+                return res;
+            }
+
             var jsonString = encoding.GetString(data);
             return JSON.Deserialize(jsonString, type, Settings);
         }
@@ -67,13 +87,20 @@ namespace Raven.Serializer.WithJil
         /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="buffer"></param>
+        /// <param name="data"></param>
         /// <param name="index"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public T Deserialize<T>(byte[] buffer, int index, int count)
+        public T Deserialize<T>(byte[] data, int index, int count)
         {
-            var jsonString = encoding.GetString(buffer, index, count);
+            object res;
+            var type = typeof(T);
+            if (TryDeserialize(type, data, index, count, out res))
+            {
+                return (T)res;
+            }
+
+            var jsonString = encoding.GetString(data, index, count);
             return JSON.Deserialize<T>(jsonString, Settings);
         }
 
@@ -82,13 +109,19 @@ namespace Raven.Serializer.WithJil
         /// 
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="buffer"></param>
+        /// <param name="data"></param>
         /// <param name="index"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public object Deserialize(Type type, byte[] buffer, int index, int count)
+        public object Deserialize(Type type, byte[] data, int index, int count)
         {
-            var jsonString = encoding.GetString(buffer, index, count);
+            object res;
+            if (TryDeserialize(type, data, index, count, out res))
+            {
+                return res;
+            }
+
+            var jsonString = encoding.GetString(data, index, count);
             return JSON.Deserialize(jsonString, type, Settings);
         }
 
