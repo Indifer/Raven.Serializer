@@ -122,7 +122,7 @@ namespace Raven.Serializer.PerformanceTest
             }
             sw.Stop();
 
-            Console.WriteLine("ProtobufTest Serialize:{0}", sw.ElapsedMilliseconds);
+            Console.WriteLine("ProtobufTest Serialize:{0}ms", sw.ElapsedMilliseconds);
 
             SpinWait.SpinUntil(() => false, 500);
             sw.Restart();
@@ -132,7 +132,7 @@ namespace Raven.Serializer.PerformanceTest
             }
             sw.Stop();
 
-            Console.WriteLine("ProtobufTest Deserialize:{0}", sw.ElapsedMilliseconds);
+            Console.WriteLine("ProtobufTest Deserialize:{0}ms", sw.ElapsedMilliseconds);
         }
 
         public static void Factory(int seed, SerializerType type, Mall mall)
@@ -149,7 +149,7 @@ namespace Raven.Serializer.PerformanceTest
             }
             sw.Stop();
 
-            Console.WriteLine("{1} Serialize:{0}", sw.ElapsedMilliseconds, serializer.GetType().Name);
+            Console.WriteLine("{1} Serialize:{0}ms", sw.ElapsedMilliseconds, serializer.GetType().Name);
 
             sw.Restart();
             for (var i = 0; i < seed; i++)
@@ -158,7 +158,7 @@ namespace Raven.Serializer.PerformanceTest
             }
             sw.Stop();
 
-            Console.WriteLine("{1} Deserialize:{0}", sw.ElapsedMilliseconds, serializer.GetType().Name);
+            Console.WriteLine("{1} Deserialize:{0}ms", sw.ElapsedMilliseconds, serializer.GetType().Name);
         }
 
         public static void MsgPackTest(int seed, Mall mall)
@@ -176,7 +176,7 @@ namespace Raven.Serializer.PerformanceTest
             }
             sw.Stop();
 
-            Console.WriteLine("MsgPackTest Serialize:{0}", sw.ElapsedMilliseconds);
+            Console.WriteLine("MsgPackTest Serialize:{0}ms", sw.ElapsedMilliseconds);
 
             sw.Restart();
             for (var i = 0; i < seed; i++)
@@ -187,7 +187,7 @@ namespace Raven.Serializer.PerformanceTest
             }
             sw.Stop();
 
-            Console.WriteLine("MsgPackTest Deserialize:{0}", sw.ElapsedMilliseconds);
+            Console.WriteLine("MsgPackTest Deserialize:{0}ms", sw.ElapsedMilliseconds);
         }
 
         public static void JilTest(int seed)
@@ -204,7 +204,7 @@ namespace Raven.Serializer.PerformanceTest
             }
             sw.Stop();
 
-            Console.WriteLine("JilTest Serialize:{0}", sw.ElapsedMilliseconds);
+            Console.WriteLine("JilTest Serialize:{0}ms", sw.ElapsedMilliseconds);
 
             sw.Restart();
             for (var i = 0; i < seed; i++)
@@ -213,7 +213,7 @@ namespace Raven.Serializer.PerformanceTest
             }
             sw.Stop();
 
-            Console.WriteLine("JilTest Deserialize:{0}", sw.ElapsedMilliseconds);
+            Console.WriteLine("JilTest Deserialize:{0}ms", sw.ElapsedMilliseconds);
         }
 
         public static void NewtonsoftTest(int seed)
@@ -230,7 +230,7 @@ namespace Raven.Serializer.PerformanceTest
             }
             sw.Stop();
 
-            Console.WriteLine("NewtonsoftTest Json Serialize:{0}", sw.ElapsedMilliseconds);
+            Console.WriteLine("NewtonsoftTest Json Serialize:{0}ms", sw.ElapsedMilliseconds);
 
             sw.Restart();
             for (var i = 0; i < seed; i++)
@@ -239,7 +239,7 @@ namespace Raven.Serializer.PerformanceTest
             }
             sw.Stop();
 
-            Console.WriteLine("NewtonsoftTest Json Deserialize:{0}", sw.ElapsedMilliseconds);
+            Console.WriteLine("NewtonsoftTest Json Deserialize:{0}ms", sw.ElapsedMilliseconds);
         }
 
         public static void NewtonsoftTestBson(int seed)
@@ -256,7 +256,7 @@ namespace Raven.Serializer.PerformanceTest
             }
             sw.Stop();
 
-            Console.WriteLine("NewtonsoftTest Bson Serialize:{0}", sw.ElapsedMilliseconds);
+            Console.WriteLine("NewtonsoftTest Bson Serialize:{0}ms", sw.ElapsedMilliseconds);
 
             sw.Restart();
             for (var i = 0; i < seed; i++)
@@ -265,7 +265,7 @@ namespace Raven.Serializer.PerformanceTest
             }
             sw.Stop();
 
-            Console.WriteLine("NewtonsoftTest Bson Deserialize:{0}", sw.ElapsedMilliseconds);
+            Console.WriteLine("NewtonsoftTest Bson Deserialize:{0}ms", sw.ElapsedMilliseconds);
         }
 
     }
