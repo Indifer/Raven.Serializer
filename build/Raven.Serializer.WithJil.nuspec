@@ -3,7 +3,9 @@
     <metadata>
         <id>Raven.Serializer.WithJil</id>
         <version>1.0.0</version>
-        <authors>liang</authors>
+        <authors>Yi Liang</authors>
+        <owners>indifer@126.com</owners>
+        <iconUrl>http://res-1251080116.costj.myqcloud.com/raven4.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Raven.Serializer.WithMsgPack</description>
         <dependencies>
