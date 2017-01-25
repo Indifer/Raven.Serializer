@@ -27,8 +27,11 @@ namespace Raven.Serializer.PerformanceTest
             //}
 
 
+            TextWriter
+
+
             string[] arr = new string[] { "UID", "ProjectType", "Token", "CreateTime", "Timeout" };
-            
+
 
             Mall mall = new Mall()
             {
@@ -71,22 +74,25 @@ namespace Raven.Serializer.PerformanceTest
             Console.WriteLine("序列化数据次数：{0:N0}", seed);
 
             SpinWait.SpinUntil(() => false, 500);
-            Factory(seed, SerializerType.Jil, mall);
+            Factory(seed, mall, SerializerType.Jil);
+
+            //SpinWait.SpinUntil(() => false, 500);
+            //MsgPackTest(seed, mall);
 
             SpinWait.SpinUntil(() => false, 500);
-            MsgPackTest(seed, mall);
+            Factory(seed, mall, SerializerType.MsgPack, new object[] { SerializationMethod.Array });
 
             SpinWait.SpinUntil(() => false, 500);
-            Factory(seed, SerializerType.MsgPack, mall);
+            Factory(seed, mall, SerializerType.MsgPack, new object[] { SerializationMethod.Map });
 
             SpinWait.SpinUntil(() => false, 500);
-            Factory(seed, SerializerType.NewtonsoftBson, mall);
+            Factory(seed, mall, SerializerType.NewtonsoftBson);
 
             SpinWait.SpinUntil(() => false, 500);
-            Factory(seed, SerializerType.NewtonsoftJson, mall);
+            Factory(seed, mall, SerializerType.NewtonsoftJson);
 
             SpinWait.SpinUntil(() => false, 500);
-            Factory(seed, SerializerType.MongoDBBson, mall);
+            Factory(seed, mall, SerializerType.MongoDBBson);
 
             Console.WriteLine("over......");
 
@@ -135,12 +141,15 @@ namespace Raven.Serializer.PerformanceTest
             Console.WriteLine("ProtobufTest Deserialize:{0}ms", sw.ElapsedMilliseconds);
         }
 
-        public static void Factory(int seed, SerializerType type, Mall mall)
+        public static void Factory(int seed, Mall mall, SerializerType type, object[] args = null)
         {
             //var serializer = global::MsgPack.Serialization.MessagePackSerializer.Get<Mall>();
-            IDataSerializer serializer = SerializerFactory.Create(type);
+            IDataSerializer serializer = SerializerFactory.Create(type, args);
             Stopwatch sw = new Stopwatch();
             byte[] data = null;
+
+            data = serializer.Serialize(mall);
+            mall = serializer.Deserialize<Mall>(data);
 
             sw.Restart();
             for (var i = 0; i < seed; i++)
@@ -149,7 +158,7 @@ namespace Raven.Serializer.PerformanceTest
             }
             sw.Stop();
 
-            Console.WriteLine("{1} Serialize:{0}ms", sw.ElapsedMilliseconds, serializer.GetType().Name);
+            Console.WriteLine("{1} Serialize:{0}ms, args:{2}", sw.ElapsedMilliseconds, serializer.GetType().Name, args?[0]);
 
             sw.Restart();
             for (var i = 0; i < seed; i++)
@@ -158,7 +167,7 @@ namespace Raven.Serializer.PerformanceTest
             }
             sw.Stop();
 
-            Console.WriteLine("{1} Deserialize:{0}ms", sw.ElapsedMilliseconds, serializer.GetType().Name);
+            Console.WriteLine("{1} Deserialize:{0}ms, args:{2}", sw.ElapsedMilliseconds, serializer.GetType().Name, args?[0]);
         }
 
         public static void MsgPackTest(int seed, Mall mall)

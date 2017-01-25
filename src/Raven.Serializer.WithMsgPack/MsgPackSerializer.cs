@@ -16,7 +16,24 @@ namespace Raven.Serializer.WithMsgPack
         //private static Dictionary<string, IMessagePackSingleObjectSerializer> msgPackserializers = new Dictionary<string, IMessagePackSingleObjectSerializer>();
         //private static object _obj = new object();
         //private static readonly Encoding encoding = Encoding.UTF8;
-        public static SerializationContext Context = new SerializationContext() { SerializationMethod = SerializationMethod.Map };        
+        private SerializationContext _context;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public MsgPackSerializer()
+        {
+            _context = new SerializationContext() { SerializationMethod = SerializationMethod.Map };
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="serializationMethod"></param>
+        public MsgPackSerializer(int serializationMethod)
+        {
+            _context = new SerializationContext() { SerializationMethod = (SerializationMethod)serializationMethod };
+        }
 
         /// <summary>
         /// 
@@ -145,7 +162,7 @@ namespace Raven.Serializer.WithMsgPack
         /// <returns></returns>
         private IMessagePackSingleObjectSerializer GetSerializer(Type t)
         {
-            return MessagePackSerializer.Get(t, Context);
+            return MessagePackSerializer.Get(t, _context);
         }
         
     }

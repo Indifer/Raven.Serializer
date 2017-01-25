@@ -14,7 +14,7 @@ namespace Raven.Serializer
     {
         #region 字段、属性
 
-        private static Dictionary<SerializerType, IDataSerializer> _serializerDict = new Dictionary<SerializerType, IDataSerializer>();
+        private static Dictionary<string, IDataSerializer> _serializerDict = new Dictionary<string, IDataSerializer>();
         private static Dictionary<SerializerType, string[]> _typeNameDict = new Dictionary<SerializerType, string[]>()
         {
             { Serializer.SerializerType.Jil ,new[] { "Raven.Serializer.WithJil","JilJsonSerializer" }},
@@ -28,25 +28,31 @@ namespace Raven.Serializer
         /// <summary>
         /// 缓存类型
         /// </summary>
-        private static IDataSerializer GetDataSerializer(SerializerType serializerType)
+        private static IDataSerializer GetDataSerializer(SerializerType serializerType, object[] args = null)
         {
-            if (_serializerDict.ContainsKey(serializerType))
+            string key = GetKey(serializerType, args);
+            if (_serializerDict.ContainsKey(key))
             {
-                return _serializerDict[serializerType];
+                return _serializerDict[key];
             }
             else
             {
                 var typeName = _typeNameDict[serializerType];
-                IDataSerializer serializer = (IDataSerializer)Assembly.Load(typeName[0]).CreateInstance(string.Concat(typeName[0], ".", typeName[1]));
+                IDataSerializer serializer = (IDataSerializer)Assembly.Load(typeName[0]).CreateInstance(string.Concat(typeName[0], ".", typeName[1]), true, BindingFlags.Default, null, args, null, null);
                 if (serializer != null)
                 {
-                    _serializerDict[serializerType] = serializer;
+                    _serializerDict[key] = serializer;
                 }
                 return serializer;
             }
         }
 
         #endregion
+
+        private static string GetKey(SerializerType serializerType, object[] args = null)
+        {
+            return string.Format("{0}:{1}", _typeNameDict[serializerType][1], args == null ? string.Empty : string.Join("_", args));
+        }
 
         /// <summary>
         /// 创建类型
@@ -55,7 +61,17 @@ namespace Raven.Serializer
         /// <returns></returns>
         public static IDataSerializer Create(SerializerType serializerType)
         {
-            IDataSerializer serializer = GetDataSerializer(serializerType);
+            return Create(serializerType, null);
+        }
+
+        /// <summary>
+        /// 创建类型
+        /// </summary>
+        /// <param name="serializerType"></param>
+        /// <returns></returns>
+        public static IDataSerializer Create(SerializerType serializerType, object[] args)
+        {
+            IDataSerializer serializer = GetDataSerializer(serializerType, args);
             //IDataSerializer serializer = (IDataSerializer)Activator.CreateInstance(type, new object[] { });
             return serializer;
         }
@@ -67,9 +83,19 @@ namespace Raven.Serializer
         /// <returns></returns>
         public static IDataSerializer Create(string serializerType)
         {
+            return Create(serializerType, null);
+        }
+
+        /// <summary>
+        /// 创建类型
+        /// </summary>
+        /// <param name="serializerType"></param>
+        /// <returns></returns>
+        public static IDataSerializer Create(string serializerType, object[] args)
+        {
             SerializerType serializerTypeEnum;
             Enum.TryParse(serializerType, out serializerTypeEnum);
-            return Create(serializerTypeEnum);
+            return Create(serializerTypeEnum, args);
         }
     }
 }

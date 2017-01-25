@@ -45,6 +45,7 @@ namespace Raven.Serializer.PerformanceTest
 
         public string J { get; set; }
 
+        
         public User User { get; set; }
 
         /// <summary>

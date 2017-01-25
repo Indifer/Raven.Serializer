@@ -137,10 +137,10 @@ namespace Raven.Serializer.Test
 
             serializer.Serialize(mall);
             Encoding encoding = Encoding.UTF8;
-            var res = encoding.GetString(data);
+            var str2 = encoding.GetString(json);
             var res2 = JSON.Serialize(mall);
-            var res3 = JSON.Deserialize<string>(res2, Options.Utc);
-            Assert.AreEqual(res, res3);
+            var res3 = JSON.Deserialize<Mall>(res2);
+            //Assert.AreEqual(str, val);
 
         }
 
@@ -185,6 +185,12 @@ namespace Raven.Serializer.Test
 
             ResponseModel_2 model2 = new ResponseModel_2();
             json = Newtonsoft.Json.JsonConvert.SerializeObject(model2);
+
+
+            IDataSerializer serializer = SerializerFactory.Create(SerializerType.NewtonsoftJson);
+            var data = serializer.Serialize(123);
+            Encoding encoding = Encoding.UTF8;
+            var str2 = encoding.GetString(data);
 
         }
     }

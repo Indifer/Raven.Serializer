@@ -16,7 +16,7 @@ namespace Raven.Serializer.WithJil
         /// <summary>
         /// 
         /// </summary>
-        public static Options Settings = Options.Utc;
+        public static Options Settings = new Options(false, false, false, DateTimeFormat.ISO8601, true, UnspecifiedDateTimeKindBehavior.IsLocal);
 
         /// <summary>
         /// 
@@ -42,7 +42,7 @@ namespace Raven.Serializer.WithJil
         /// <param name="stream"></param>
         public void Serialize(object obj, Stream stream)
         {
-            var data = Serialize(obj);
+            var data = this.Serialize(obj);
             stream.Write(data, 0, data.Length);
         }
 
@@ -138,7 +138,7 @@ namespace Raven.Serializer.WithJil
             // 设置当前流的位置为流的开始
             stream.Seek(0, SeekOrigin.Begin);
 
-            return Deserialize<T>(bytes);
+            return this.Deserialize<T>(bytes);
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Raven.Serializer.WithJil
             // 设置当前流的位置为流的开始
             stream.Seek(0, SeekOrigin.Begin);
 
-            return Deserialize(type, bytes);
+            return this.Deserialize(type, bytes);
         }
 
     }
