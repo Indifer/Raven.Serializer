@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Raven.Serializer.PerformanceTest\Mall.cs" Link="Mall.cs" />
+    <Compile Include="..\Raven.Serializer.PerformanceTest\Program.cs" Link="Program.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Jil" Version="2.15.0" />
+    <PackageReference Include="MsgPack.Cli" Version="0.8.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Raven.Serializer.WithJil\Raven.Serializer.WithJil.csproj" />
+    <ProjectReference Include="..\..\Raven.Serializer.WithMsgPack\Raven.Serializer.WithMsgPack.csproj" />
+    <ProjectReference Include="..\..\Raven.Serializer.WithNewtonsoft\Raven.Serializer.WithNewtonsoft.csproj" />
+    <ProjectReference Include="..\..\Raven.Serializer\Raven.Serializer.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,17 +1,10 @@
-﻿using Jil;
-using MsgPack.Serialization;
+﻿using MsgPack.Serialization;
 using Raven.Serializer.WithJil;
-using Raven.Serializer.WithMsgPack;
 using Raven.Serializer.WithNewtonsoft;
-using Raven.Serializer.WithProtobuf;
+//using Raven.Serializer.WithProtobuf;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Raven.Serializer.PerformanceTest
 {
@@ -19,19 +12,14 @@ namespace Raven.Serializer.PerformanceTest
     {
         static void Main(string[] args)
         {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             //while (true)
             //{
             //    SpinWait.SpinUntil(() => false, 1);
             //    //Thread.Sleep(1);
             //    Console.WriteLine(DateTime.Now.ToString());
             //}
-
-
-            TextWriter
-
-
             string[] arr = new string[] { "UID", "ProjectType", "Token", "CreateTime", "Timeout" };
-
 
             Mall mall = new Mall()
             {
@@ -91,8 +79,8 @@ namespace Raven.Serializer.PerformanceTest
             SpinWait.SpinUntil(() => false, 500);
             Factory(seed, mall, SerializerType.NewtonsoftJson);
 
-            SpinWait.SpinUntil(() => false, 500);
-            Factory(seed, mall, SerializerType.MongoDBBson);
+            //SpinWait.SpinUntil(() => false, 500);
+            //Factory(seed, mall, SerializerType.MongoDBBson);
 
             Console.WriteLine("over......");
 
@@ -114,32 +102,32 @@ namespace Raven.Serializer.PerformanceTest
             Console.ReadLine();
         }
 
-        public static void ProtobufTest(int seed)
-        {
-            ProtobufSerializer serializer = new ProtobufSerializer();
-            Mall mall = new Mall() { ID = 1, Name = "大悦城", GroupID = 135 };
-            Stopwatch sw = new Stopwatch();
-            byte[] data = null;
+        //public static void ProtobufTest(int seed)
+        //{
+        //    ProtobufSerializer serializer = new ProtobufSerializer();
+        //    Mall mall = new Mall() { ID = 1, Name = "大悦城", GroupID = 135 };
+        //    Stopwatch sw = new Stopwatch();
+        //    byte[] data = null;
 
-            sw.Restart();
-            for (var i = 0; i < seed; i++)
-            {
-                data = serializer.Serialize(mall);
-            }
-            sw.Stop();
+        //    sw.Restart();
+        //    for (var i = 0; i < seed; i++)
+        //    {
+        //        data = serializer.Serialize(mall);
+        //    }
+        //    sw.Stop();
 
-            Console.WriteLine("ProtobufTest Serialize:{0}ms", sw.ElapsedMilliseconds);
+        //    Console.WriteLine("ProtobufTest Serialize:{0}ms", sw.ElapsedMilliseconds);
 
-            SpinWait.SpinUntil(() => false, 500);
-            sw.Restart();
-            for (var i = 0; i < seed; i++)
-            {
-                mall = serializer.Deserialize<Mall>(data);
-            }
-            sw.Stop();
+        //    SpinWait.SpinUntil(() => false, 500);
+        //    sw.Restart();
+        //    for (var i = 0; i < seed; i++)
+        //    {
+        //        mall = serializer.Deserialize<Mall>(data);
+        //    }
+        //    sw.Stop();
 
-            Console.WriteLine("ProtobufTest Deserialize:{0}ms", sw.ElapsedMilliseconds);
-        }
+        //    Console.WriteLine("ProtobufTest Deserialize:{0}ms", sw.ElapsedMilliseconds);
+        //}
 
         public static void Factory(int seed, Mall mall, SerializerType type, object[] args = null)
         {

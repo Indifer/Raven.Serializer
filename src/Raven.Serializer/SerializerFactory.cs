@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Raven.Serializer
 {
@@ -22,7 +19,9 @@ namespace Raven.Serializer
             { Serializer.SerializerType.NewtonsoftBson ,new[] { "Raven.Serializer.WithNewtonsoft","NewtsBsonSerializer" }},
             { Serializer.SerializerType.NewtonsoftJson ,new[] { "Raven.Serializer.WithNewtonsoft","NewtsJsonSerializer" }},
             { Serializer.SerializerType.Protobuf , new[] {"Raven.Serializer.WithProtobuf","ProtobufSerializer" }},
+#if net45 || net46
             { Serializer.SerializerType.MongoDBBson ,new[] { "Raven.Serializer.WithMongoDBBson", "MongoBsonSerializer" }},
+#endif
         };
 
         /// <summary>
@@ -38,7 +37,9 @@ namespace Raven.Serializer
             else
             {
                 var typeName = _typeNameDict[serializerType];
-                IDataSerializer serializer = (IDataSerializer)Assembly.Load(typeName[0]).CreateInstance(string.Concat(typeName[0], ".", typeName[1]), true, BindingFlags.Default, null, args, null, null);
+                Type type = Assembly.Load(new AssemblyName(typeName[0])).GetType(string.Concat(typeName[0], ".", typeName[1]), false, true);
+                IDataSerializer serializer = (IDataSerializer)Activator.CreateInstance(type, args);
+                //IDataSerializer serializer = (IDataSerializer)Assembly.Load(new AssemblyName(typeName[0])).CreateInstance(string.Concat(typeName[0], ".", typeName[1]), true, BindingFlags.Default, null, args, null, null);
                 if (serializer != null)
                 {
                     _serializerDict[key] = serializer;
@@ -47,8 +48,14 @@ namespace Raven.Serializer
             }
         }
 
-        #endregion
+#endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="serializerType"></param>
+        /// <param name="args"></param>
+        /// <returns></returns>
         private static string GetKey(SerializerType serializerType, object[] args = null)
         {
             return string.Format("{0}:{1}", _typeNameDict[serializerType][1], args == null ? string.Empty : string.Join("_", args));

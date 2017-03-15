@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Jil;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MsgPack.Serialization;
 using Raven.Serializer.PerformanceTest;
-using Jil;
+using System;
 using System.Text;
 
 namespace Raven.Serializer.Test
@@ -144,38 +143,38 @@ namespace Raven.Serializer.Test
 
         }
 
-        [TestMethod]
-        public void MongoDBTest()
-        {
-            IDataSerializer serializer = SerializerFactory.Create(SerializerType.MongoDBBson);
+        //[TestMethod]
+        //public void MongoDBTest()
+        //{
+        //    IDataSerializer serializer = SerializerFactory.Create(SerializerType.MongoDBBson);
 
-            Mall mall = new Mall()
-            {
-                ID = 1,
-                Name = "大悦城",
-                GroupID = 135,
-                AAAAAAAAAA = "aaaa",
-                BBBBBBBBBB = "BBBB",
-                CCCCCCCCCC = "hygfjrt7kuylkhgliu;oi;yhdhtfjhsj",
-                D = "kuykj687jrstskhgfk",
-                EEEEEEEEEE = "jhlhlgjhkuykjuyt",
-                F = "djsgfjdjg",
-                G = "fdsgasdgs",
-                HHHHHHHHHH = "hgfdhergfdhs",
-                I = "fdjnhterjrgtas",
-                J = "fdhs5htrjgfdfdg",
-                User = new User()
-                {
-                    Date = DateTime.Now,
-                    ID = 132414,
-                    Name = "ggsgshahsahsdha"
-                }
-            };
+        //    Mall mall = new Mall()
+        //    {
+        //        ID = 1,
+        //        Name = "大悦城",
+        //        GroupID = 135,
+        //        AAAAAAAAAA = "aaaa",
+        //        BBBBBBBBBB = "BBBB",
+        //        CCCCCCCCCC = "hygfjrt7kuylkhgliu;oi;yhdhtfjhsj",
+        //        D = "kuykj687jrstskhgfk",
+        //        EEEEEEEEEE = "jhlhlgjhkuykjuyt",
+        //        F = "djsgfjdjg",
+        //        G = "fdsgasdgs",
+        //        HHHHHHHHHH = "hgfdhergfdhs",
+        //        I = "fdjnhterjrgtas",
+        //        J = "fdhs5htrjgfdfdg",
+        //        User = new User()
+        //        {
+        //            Date = DateTime.Now,
+        //            ID = 132414,
+        //            Name = "ggsgshahsahsdha"
+        //        }
+        //    };
 
-            var json = serializer.Serialize(mall);
-            var mall2 = serializer.Deserialize<Mall>(json);
-            Assert.AreEqual(mall.Name, mall2.Name);
-        }
+        //    var json = serializer.Serialize(mall);
+        //    var mall2 = serializer.Deserialize<Mall>(json);
+        //    Assert.AreEqual(mall.Name, mall2.Name);
+        //}
 
         [TestMethod]
         public void NewtonsoftJsonTest()
