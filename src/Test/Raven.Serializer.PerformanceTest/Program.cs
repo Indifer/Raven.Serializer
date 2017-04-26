@@ -161,7 +161,7 @@ namespace Raven.Serializer.PerformanceTest
         public static void MsgPackTest(int seed, Mall mall)
         {
             //MsgPackSerializer serializer = new MsgPackSerializer();
-            IMessagePackSingleObjectSerializer serializer = MsgPack.Serialization.MessagePackSerializer.Get(typeof(Mall));
+            MessagePackSerializer serializer = MsgPack.Serialization.MessagePackSerializer.Get(typeof(Mall));
             Stopwatch sw = new Stopwatch();
             byte[] data = null;
 
