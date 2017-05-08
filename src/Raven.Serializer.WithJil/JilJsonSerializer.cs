@@ -18,6 +18,21 @@ namespace Raven.Serializer.WithJil
         /// </summary>
         public static Options Settings = new Options(false, false, false, DateTimeFormat.ISO8601, true, UnspecifiedDateTimeKindBehavior.IsLocal);
 
+        Options _settings;
+
+        Options GetSetting()
+        {
+            return _settings ?? Settings;
+        }
+
+        public JilJsonSerializer()
+        { }
+
+        public JilJsonSerializer(Options setting)
+        {
+            _settings = setting;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -31,7 +46,7 @@ namespace Raven.Serializer.WithJil
                 return res;
             }
 
-            var jsonString = JSON.Serialize(obj, Settings);
+            var jsonString = JSON.Serialize(obj, GetSetting());
             return encoding.GetBytes(jsonString);
         }
 
@@ -62,7 +77,7 @@ namespace Raven.Serializer.WithJil
             }
 
             var jsonString = encoding.GetString(data);
-            return JSON.Deserialize<T>(jsonString, Settings);
+            return JSON.Deserialize<T>(jsonString, GetSetting());
         }
 
         /// <summary>
@@ -80,7 +95,7 @@ namespace Raven.Serializer.WithJil
             }
 
             var jsonString = encoding.GetString(data);
-            return JSON.Deserialize(jsonString, type, Settings);
+            return JSON.Deserialize(jsonString, type, GetSetting());
         }
 
         /// <summary>
@@ -101,7 +116,7 @@ namespace Raven.Serializer.WithJil
             }
 
             var jsonString = encoding.GetString(data, index, count);
-            return JSON.Deserialize<T>(jsonString, Settings);
+            return JSON.Deserialize<T>(jsonString, GetSetting());
         }
 
 
@@ -122,7 +137,7 @@ namespace Raven.Serializer.WithJil
             }
 
             var jsonString = encoding.GetString(data, index, count);
-            return JSON.Deserialize(jsonString, type, Settings);
+            return JSON.Deserialize(jsonString, type, GetSetting());
         }
 
         /// <summary>

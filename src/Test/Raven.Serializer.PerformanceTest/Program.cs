@@ -26,9 +26,7 @@ namespace Raven.Serializer.PerformanceTest
             //    Console.WriteLine(DateTime.Now.ToString());
             //}
 
-
-            TextWriter
-
+            
 
             string[] arr = new string[] { "UID", "ProjectType", "Token", "CreateTime", "Timeout" };
 
@@ -56,11 +54,27 @@ namespace Raven.Serializer.PerformanceTest
                     Name = "ggsgshahsahsdha"
                 }
             };
-            
-            int seed = 100000;
+
+            Dictionary<string, object> dict = new Dictionary<string, object>();
+            dict.Add("hello", DateTime.Now);
+            dict.Add("world", 100);
+
+            int seed = 1000000;
 
             IDataSerializer serializer1 = SerializerFactory.Create(SerializerType.NewtonsoftJson);
             IDataSerializer serializer2 = SerializerFactory.Create(SerializerType.Jil);
+            IDataSerializer serializer3 = SerializerFactory.Create(SerializerType.NewtonsoftBson);
+            IDataSerializer serializer4 = SerializerFactory.Create(SerializerType.MsgPack);
+            JilJsonSerializer.Settings = new Options(false, false, false, DateTimeFormat.ISO8601, true, UnspecifiedDateTimeKindBehavior.IsLocal);
+
+            var dd1 = serializer1.Serialize(dict);
+            var oo1 = serializer1.Deserialize<Dictionary<string, object>>(dd1);
+            var dd2 = serializer2.Serialize(dict);
+            var oo2 = serializer2.Deserialize<Dictionary<string, object>>(dd2);
+            var dd3 = serializer3.Serialize(dict);
+            var oo3 = serializer3.Deserialize<Dictionary<string, object>>(dd3);
+            var dd4 = serializer4.Serialize(dict);
+            var oo4 = serializer4.Deserialize<Dictionary<string, object>>(dd4);
 
             var data = serializer2.Serialize(mall);
             var mall2 = serializer1.Deserialize<Mall>(data);

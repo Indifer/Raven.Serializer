@@ -99,7 +99,7 @@ namespace Raven.Serializer.Test
             string val = "abc个";
             //byte[] buffer = new byte[7];
 
-            IDataSerializer serializer = SerializerFactory.Create(SerializerType.Jil);
+            IDataSerializer serializer = SerializerFactory.Create(SerializerType.Jil, new Object[] { new Options(false, false, false, DateTimeFormat.MillisecondsSinceUnixEpoch, false, UnspecifiedDateTimeKindBehavior.IsUTC) });
 
             var data = serializer.Serialize(val);
             //CollectionAssert.AreEqual(data, buffer);
