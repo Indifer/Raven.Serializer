@@ -25,9 +25,7 @@ namespace Raven.Serializer.PerformanceTest
             //    //Thread.Sleep(1);
             //    Console.WriteLine(DateTime.Now.ToString());
             //}
-
             
-
             string[] arr = new string[] { "UID", "ProjectType", "Token", "CreateTime", "Timeout" };
 
 
@@ -59,7 +57,7 @@ namespace Raven.Serializer.PerformanceTest
             dict.Add("hello", DateTime.Now);
             dict.Add("world", 100);
 
-            int seed = 1000000;
+            int seed = 100000;
 
             IDataSerializer serializer1 = SerializerFactory.Create(SerializerType.NewtonsoftJson);
             IDataSerializer serializer2 = SerializerFactory.Create(SerializerType.Jil);
