@@ -26,8 +26,6 @@ namespace Raven.Serializer.PerformanceTest
             //    Console.WriteLine(DateTime.Now.ToString());
             //}
 
-            
-
             string[] arr = new string[] { "UID", "ProjectType", "Token", "CreateTime", "Timeout" };
 
 
@@ -60,7 +58,7 @@ namespace Raven.Serializer.PerformanceTest
             dict.Add("world", 100);
             dict.Add("enumt", EnumT.T1);
 
-            int seed = 1000000;
+            int seed = 100000;
             NewtsJsonSerializer.Settings = new Newtonsoft.Json.JsonSerializerSettings() { DateFormatString = "yyyy-MM-dd'T'HH:mm:ss.fffzz00" };
             IDataSerializer serializer1 = SerializerFactory.Create(SerializerType.NewtonsoftJson);
             IDataSerializer serializer2 = SerializerFactory.Create(SerializerType.Jil);

@@ -14,7 +14,7 @@ namespace Raven.Serializer
     {
         #region 字段、属性
 
-        private static Dictionary<string, IDataSerializer> _serializerDict = new Dictionary<string, IDataSerializer>();
+        //private static Dictionary<string, IDataSerializer> _serializerDict = new Dictionary<string, IDataSerializer>();
         private static Dictionary<SerializerType, string[]> _typeNameDict = new Dictionary<SerializerType, string[]>()
         {
             { Serializer.SerializerType.Jil ,new[] { "Raven.Serializer.WithJil","JilJsonSerializer" }},
@@ -31,18 +31,18 @@ namespace Raven.Serializer
         private static IDataSerializer GetDataSerializer(SerializerType serializerType, object[] args = null)
         {
             string key = GetKey(serializerType, args);
-            if (_serializerDict.ContainsKey(key))
+            if (false)//_serializerDict.ContainsKey(key))
             {
-                return _serializerDict[key];
+                //return _serializerDict[key];
             }
             else
             {
                 var typeName = _typeNameDict[serializerType];
                 IDataSerializer serializer = (IDataSerializer)Assembly.Load(typeName[0]).CreateInstance(string.Concat(typeName[0], ".", typeName[1]), true, BindingFlags.Default, null, args, null, null);
-                if (serializer != null)
-                {
-                    _serializerDict[key] = serializer;
-                }
+                //if (serializer != null)
+                //{
+                //    _serializerDict[key] = serializer;
+                //}
                 return serializer;
             }
         }
