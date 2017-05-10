@@ -58,9 +58,10 @@ namespace Raven.Serializer.PerformanceTest
             Dictionary<string, object> dict = new Dictionary<string, object>();
             dict.Add("hello", DateTime.Now);
             dict.Add("world", 100);
+            dict.Add("enumt", EnumT.T1);
 
             int seed = 1000000;
-
+            NewtsJsonSerializer.Settings = new Newtonsoft.Json.JsonSerializerSettings() { DateFormatString = "yyyy-MM-dd'T'HH:mm:ss.fffzz00" };
             IDataSerializer serializer1 = SerializerFactory.Create(SerializerType.NewtonsoftJson);
             IDataSerializer serializer2 = SerializerFactory.Create(SerializerType.Jil);
             IDataSerializer serializer3 = SerializerFactory.Create(SerializerType.NewtonsoftBson);
@@ -291,5 +292,12 @@ namespace Raven.Serializer.PerformanceTest
             Console.WriteLine("NewtonsoftTest Bson Deserialize:{0}ms", sw.ElapsedMilliseconds);
         }
 
+    }
+
+    public enum EnumT
+    {
+        T1 = 1,
+        T2 = 2,
+        T3 = 3,
     }
 }

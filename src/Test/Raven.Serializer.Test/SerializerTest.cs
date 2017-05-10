@@ -187,7 +187,7 @@ namespace Raven.Serializer.Test
             json = Newtonsoft.Json.JsonConvert.SerializeObject(model2);
 
 
-            IDataSerializer serializer = SerializerFactory.Create(SerializerType.NewtonsoftJson);
+            IDataSerializer serializer = SerializerFactory.Create(SerializerType.NewtonsoftJson, new object[] { new WithNewtonsoft.SerizlizerSetting() { DateFormatString="yyyy-MM-dd" } });
             var data = serializer.Serialize(123);
             Encoding encoding = Encoding.UTF8;
             var str2 = encoding.GetString(data);

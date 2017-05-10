@@ -9,6 +9,17 @@
             
             </summary>
         </member>
+        <member name="M:Raven.Serializer.WithMsgPack.MsgPackSerializer.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Raven.Serializer.WithMsgPack.MsgPackSerializer.#ctor(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="serializationMethod"></param>
+        </member>
         <member name="M:Raven.Serializer.WithMsgPack.MsgPackSerializer.Serialize(System.Object)">
             <summary>
             

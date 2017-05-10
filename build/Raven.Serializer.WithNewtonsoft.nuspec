@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Raven.Serializer.WithNewtonsoft</id>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
         <authors>Yi Liang</authors>
         <owners>indifer@126.com</owners>
         <iconUrl>http://res-1251080116.costj.myqcloud.com/raven4.png</iconUrl>
@@ -10,7 +10,7 @@
         <description>Raven.Serializer.WithNewtonsoft</description>
         <dependencies>
             <dependency id="Newtonsoft.Json" version="7.0.1" />
-            <dependency id="Raven.Serializer" version="1.0.1" />
+            <dependency id="Raven.Serializer" version="1.0.2" />
         </dependencies>
     </metadata>
     <files>

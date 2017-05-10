@@ -48,13 +48,22 @@ namespace Raven.Serializer.PerformanceTest
         
         public User User { get; set; }
 
+        public MallType MallType { get; set; }
+
         /// <summary>
         /// 商场构造函数
         /// </summary>
         public Mall()
         {
-
+            
         }
+    }
+
+    public enum MallType
+    {
+        M0 = 0,
+        M1 = 1,
+        M2 = 2,
     }
 
     //[DataContract]

@@ -121,7 +121,7 @@
             
             </summary>
         </member>
-        <member name="M:Raven.Serializer.SerializerFactory.GetDataSerializer(Raven.Serializer.SerializerType)">
+        <member name="M:Raven.Serializer.SerializerFactory.GetDataSerializer(Raven.Serializer.SerializerType,System.Object[])">
             <summary>
             缓存类型
             </summary>
@@ -133,7 +133,21 @@
             <param name="serializerType"></param>
             <returns></returns>
         </member>
+        <member name="M:Raven.Serializer.SerializerFactory.Create(Raven.Serializer.SerializerType,System.Object[])">
+            <summary>
+            创建类型
+            </summary>
+            <param name="serializerType"></param>
+            <returns></returns>
+        </member>
         <member name="M:Raven.Serializer.SerializerFactory.Create(System.String)">
+            <summary>
+            创建类型
+            </summary>
+            <param name="serializerType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Raven.Serializer.SerializerFactory.Create(System.String,System.Object[])">
             <summary>
             创建类型
             </summary>

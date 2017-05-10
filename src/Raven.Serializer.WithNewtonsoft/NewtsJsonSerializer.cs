@@ -18,6 +18,20 @@ namespace Raven.Serializer.WithNewtonsoft
         /// </summary>
         public static JsonSerializerSettings Settings = new JsonSerializerSettings() { Formatting = Formatting.None };
 
+        JsonSerializerSettings _setting = null;
+
+        JsonSerializerSettings GetSetting()
+        {
+            return _setting ?? Settings;
+        }
+
+        public NewtsJsonSerializer() { }
+        public NewtsJsonSerializer(SerizlizerSetting setting)
+        {
+            _setting = new JsonSerializerSettings();
+            _setting.DateFormatString = setting.DateFormatString;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -29,7 +43,7 @@ namespace Raven.Serializer.WithNewtonsoft
                 return res;
             }
 
-            var jsonString = JsonConvert.SerializeObject(obj, Settings);
+            var jsonString = JsonConvert.SerializeObject(obj, GetSetting());
             return encoding.GetBytes(jsonString);
         }
 
@@ -60,7 +74,7 @@ namespace Raven.Serializer.WithNewtonsoft
             }
 
             var jsonString = encoding.GetString(data);
-            return JsonConvert.DeserializeObject<T>(jsonString, Settings);
+            return JsonConvert.DeserializeObject<T>(jsonString, GetSetting());
         }
 
         /// <summary>
@@ -78,7 +92,7 @@ namespace Raven.Serializer.WithNewtonsoft
             }
 
             var jsonString = encoding.GetString(data);
-            return JsonConvert.DeserializeObject(jsonString, type, Settings);
+            return JsonConvert.DeserializeObject(jsonString, type, GetSetting());
         }
 
         /// <summary>
@@ -99,7 +113,7 @@ namespace Raven.Serializer.WithNewtonsoft
             }
 
             var jsonString = encoding.GetString(data, index, count);
-            return JsonConvert.DeserializeObject<T>(jsonString, Settings);
+            return JsonConvert.DeserializeObject<T>(jsonString, GetSetting());
         }
 
         /// <summary>
@@ -119,7 +133,7 @@ namespace Raven.Serializer.WithNewtonsoft
             }
 
             var jsonString = encoding.GetString(data, index, count);
-            return JsonConvert.DeserializeObject(jsonString, type, Settings);
+            return JsonConvert.DeserializeObject(jsonString, type, GetSetting());
         }
 
         /// <summary>
