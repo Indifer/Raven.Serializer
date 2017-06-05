@@ -20,12 +20,24 @@ namespace Raven.Serializer.WithNewtonsoft
 
         JsonSerializerSettings _setting = null;
 
-        JsonSerializerSettings GetSetting()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private JsonSerializerSettings GetSetting()
         {
             return _setting ?? Settings;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public NewtsJsonSerializer() { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="setting"></param>
         public NewtsJsonSerializer(SerizlizerSetting setting)
         {
             _setting = new JsonSerializerSettings();
