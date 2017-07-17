@@ -167,6 +167,13 @@
             <param name="millisecondsSinceEpoch">The number of milliseconds since Unix epoch.</param>
             <returns>A DateTime.</returns>
         </member>
+        <member name="M:MongoDB.Bson.BsonUtils.ToHexChar(System.Int32)">
+            <summary>
+            Converts a value to a hex character.
+            </summary>
+            <param name="value">The value (assumed to be between 0 and 15).</param>
+            <returns>The hex character.</returns>
+        </member>
         <member name="M:MongoDB.Bson.BsonUtils.ToHexString(System.Byte[])">
             <summary>
             Converts a byte array to a hex string.
@@ -10230,10 +10237,11 @@
         </member>
         <member name="M:MongoDB.Bson.Decimal128.IsZero(MongoDB.Bson.Decimal128)">
             <summary>
-            Gets a value indicating whether this instance is zero.
+            Returns a value indicating whether the specified number is zero.
             </summary>
+            <param name="d">A 128-bit decimal.</param>
             <returns>
-              <c>true</c> if this instance is zero; otherwise, <c>false</c>.
+              <c>true</c> if the specified number is zero; otherwise, <c>false</c>.
             </returns>
         </member>
         <member name="M:MongoDB.Bson.Decimal128.Negate(MongoDB.Bson.Decimal128)">
