@@ -19,8 +19,7 @@ namespace Raven.Serializer.WithNewtonsoft
         /// </summary>
         public byte[] Serialize(object obj)
         {
-            byte[] res = null;
-            if (TrySerialize(obj, out res))
+            if (TrySerialize(obj, out byte[] res))
             {
                 return res;
             }
@@ -48,9 +47,8 @@ namespace Raven.Serializer.WithNewtonsoft
         /// <returns></returns>
         public T Deserialize<T>(byte[] data)
         {
-            object res;
             var type = typeof(T);
-            if (TryDeserialize(type, data, out res))
+            if (TryDeserialize(type, data, out object res))
             {
                 return (T)res;
             }
@@ -67,8 +65,7 @@ namespace Raven.Serializer.WithNewtonsoft
         /// <returns></returns>
         public object Deserialize(Type type, byte[] data)
         {
-            object res;
-            if (TryDeserialize(type, data, out res))
+            if (TryDeserialize(type, data, out object res))
             {
                 return res;
             }
@@ -87,9 +84,8 @@ namespace Raven.Serializer.WithNewtonsoft
         /// <returns></returns>
         public T Deserialize<T>(byte[] data, int index, int count)
         {
-            object res;
             var type = typeof(T);
-            if (TryDeserialize(type, data, index, count, out res))
+            if (TryDeserialize(type, data, index, count, out object res))
             {
                 return (T)res;
             }
@@ -108,8 +104,7 @@ namespace Raven.Serializer.WithNewtonsoft
         /// <returns></returns>
         public object Deserialize(Type type, byte[] data, int index, int count)
         {
-            object res;
-            if (TryDeserialize(type, data, index, count, out res))
+            if (TryDeserialize(type, data, index, count, out object res))
             {
                 return res;
             }
