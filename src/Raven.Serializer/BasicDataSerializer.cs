@@ -11,7 +11,7 @@ namespace Raven.Serializer
         protected static readonly Encoding encoding = Encoding.UTF8;
         protected static readonly Type stringType = typeof(string);
         protected static readonly Type byteArrayType = typeof(byte[]);
-
+        
         /// <summary>
         /// 
         /// </summary>
