@@ -6,6 +6,12 @@
     <FileVersion>2.0.0.0</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Version>2.0.0</Version>
+    <Authors>Yi.Liang</Authors>
+    <Company>indifer@126.com</Company>
+    <Description>Raven.Serializer</Description>
+    <PackageIconUrl>http://res-1251080116.costj.myqcloud.com/raven4.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/Raven-Source/Raven.Serializer</PackageProjectUrl>
+    <PackageTags></PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">

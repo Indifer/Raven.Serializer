@@ -5,6 +5,12 @@
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <FileVersion>2.0.0.0</FileVersion>
     <Version>2.0.0</Version>
+    <Authors>Yi.Liang</Authors>
+    <Company>indifer@126.com</Company>
+    <Product>Raven.Serializer.WithNewtonsoft</Product>
+    <Description>Raven.Serializer.WithNewtonsoft</Description>
+    <PackageProjectUrl>https://github.com/Raven-Source/Raven.Serializer</PackageProjectUrl>
+    <PackageIconUrl>http://res-1251080116.costj.myqcloud.com/raven4.png</PackageIconUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
