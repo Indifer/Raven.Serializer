@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net45;net46;netstandard1.6;</TargetFrameworks>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
+    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <FileVersion>2.0.0.1</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <Authors>Yi.Liang</Authors>
     <Company>indifer@126.com</Company>
     <Description>Raven.Serializer</Description>
@@ -18,10 +18,10 @@
     <DocumentationFile>bin\Release\net45\Raven.Serializer.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net46|AnyCPU'">
-    <DocumentationFile>bin\Release\net45\Raven.Serializer.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\net46\Raven.Serializer.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.6|AnyCPU'">
-    <DocumentationFile>bin\Release\net45\Raven.Serializer.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard1.6\Raven.Serializer.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>
