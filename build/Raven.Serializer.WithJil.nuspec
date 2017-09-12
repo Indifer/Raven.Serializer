@@ -2,15 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Raven.Serializer.WithJil</id>
-        <version>1.0.0</version>
+        <version>2.0.0</version>
         <authors>Yi Liang</authors>
         <owners>indifer@126.com</owners>
         <iconUrl>http://res-1251080116.costj.myqcloud.com/raven4.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Raven.Serializer.WithMsgPack</description>
         <dependencies>
-            <dependency id="Jil" version="2.12.1" />
-            <dependency id="Raven.Serializer" version="1.0.1" />
+            <dependency id="Jil" version="2.15.4" />
+            <dependency id="Raven.Serializer" version="2.0.0" />
         </dependencies>
     </metadata>
     <files>

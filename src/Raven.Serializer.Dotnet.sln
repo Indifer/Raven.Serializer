@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer", "Raven.Serializer\Raven.Serializer.csproj", "{62F07E3B-4544-40BE-9556-71999BF917F7}"
 EndProject
@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer.WithNewton
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer.WithMsgPack", "Raven.Serializer.WithMsgPack\Raven.Serializer.WithMsgPack.csproj", "{313AE66A-7409-4918-B8B2-C05A8DA52395}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.WithJil", "Raven.Serializer.WithJil\Raven.Serializer.WithJil.csproj", "{6E6CE6B8-1A3D-43D0-911B-213CF3BC5850}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer.WithJil", "Raven.Serializer.WithJil\Raven.Serializer.WithJil.csproj", "{6E6CE6B8-1A3D-43D0-911B-213CF3BC5850}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{BFEC3D3D-3395-44A7-AD46-E1B496FD1738}"
 EndProject
@@ -19,9 +19,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.Performanc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.Test", "Test\Raven.Serializer.Test\Raven.Serializer.Test.csproj", "{1CD872F9-BFB8-4595-A45D-91766DF2B7AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.NetCore.Test", "Test\Raven.Serializer.NetCore.Test\Raven.Serializer.NetCore.Test.csproj", "{CD57C3E5-4663-479D-B278-5B466DBCF382}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer.NetCore.Test", "Test\Raven.Serializer.NetCore.Test\Raven.Serializer.NetCore.Test.csproj", "{CD57C3E5-4663-479D-B278-5B466DBCF382}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.NetCore.PerformanceTest", "Test\Raven.Serializer.NetCore.PerformanceTest\Raven.Serializer.NetCore.PerformanceTest.csproj", "{4407121F-D200-4B71-BD76-899BD7080BFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer.NetCore.PerformanceTest", "Test\Raven.Serializer.NetCore.PerformanceTest\Raven.Serializer.NetCore.PerformanceTest.csproj", "{4407121F-D200-4B71-BD76-899BD7080BFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,5 +74,8 @@ Global
 		{1CD872F9-BFB8-4595-A45D-91766DF2B7AA} = {BFEC3D3D-3395-44A7-AD46-E1B496FD1738}
 		{CD57C3E5-4663-479D-B278-5B466DBCF382} = {BFEC3D3D-3395-44A7-AD46-E1B496FD1738}
 		{4407121F-D200-4B71-BD76-899BD7080BFD} = {BFEC3D3D-3395-44A7-AD46-E1B496FD1738}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81A44A55-CFFD-4B5F-BCEB-717090AD059A}
 	EndGlobalSection
 EndGlobal

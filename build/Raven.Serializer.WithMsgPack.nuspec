@@ -9,8 +9,8 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Raven.Serializer.WithMsgPack</description>
         <dependencies>
-            <dependency id="MsgPack.Cli" version="0.6.7" />
-            <dependency id="Raven.Serializer" version="1.0.1" />
+            <dependency id="MsgPack.Cli" version="0.9.1" />
+            <dependency id="Raven.Serializer" version="2.0.0" />
         </dependencies>
     </metadata>
     <files>
