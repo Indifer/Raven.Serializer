@@ -7,7 +7,7 @@ namespace Raven.Serializer.WithJil
     /// <summary>
     /// 
     /// </summary>
-    public class JilJsonSerializer : BasicDataSerializer, IDataSerializer
+    public class JilJsonSerializer : BasicDataSerializer, IDataSerializer, IStringDataSerializer
     {
         /// <summary>
         /// 
@@ -40,6 +40,15 @@ namespace Raven.Serializer.WithJil
         {
             var data = this.Serialize(obj);
             stream.Write(data, 0, data.Length);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string SerializeToString(object obj)
+        {
+            if (obj is string) return (string)obj;
+            return JSON.Serialize(obj, Settings);
         }
 
         /// <summary>

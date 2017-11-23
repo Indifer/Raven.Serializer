@@ -1,4 +1,4 @@
-﻿using MsgPack.Serialization;
+﻿//using MsgPack.Serialization;
 using Raven.Serializer.WithJil;
 using Raven.Serializer.WithNewtonsoft;
 //using Raven.Serializer.WithProtobuf;
@@ -68,10 +68,13 @@ namespace Raven.Serializer.PerformanceTest
             //MsgPackTest(seed, mall);
 
             SpinWait.SpinUntil(() => false, 500);
-            Factory(seed, mall, SerializerType.MsgPack, new object[] { SerializationMethod.Array });
+            Factory(seed, mall, SerializerType.MsgPack);
 
-            SpinWait.SpinUntil(() => false, 500);
-            Factory(seed, mall, SerializerType.MsgPack, new object[] { SerializationMethod.Map });
+            //SpinWait.SpinUntil(() => false, 500);
+            //Factory(seed, mall, SerializerType.MsgPack, new object[] { SerializationMethod.Array });
+
+            //SpinWait.SpinUntil(() => false, 500);
+            //Factory(seed, mall, SerializerType.MsgPack, new object[] { SerializationMethod.Map });
 
             SpinWait.SpinUntil(() => false, 500);
             Factory(seed, mall, SerializerType.NewtonsoftBson);
@@ -158,34 +161,34 @@ namespace Raven.Serializer.PerformanceTest
             Console.WriteLine("{1} Deserialize:{0}ms, args:{2}", sw.ElapsedMilliseconds, serializer.GetType().Name, args?[0]);
         }
 
-        public static void MsgPackTest(int seed, Mall mall)
-        {
-            //MsgPackSerializer serializer = new MsgPackSerializer();
-            MessagePackSerializer serializer = MsgPack.Serialization.MessagePackSerializer.Get(typeof(Mall));
-            Stopwatch sw = new Stopwatch();
-            byte[] data = null;
+        //public static void MsgPackTest(int seed, Mall mall)
+        //{
+        //    //MsgPackSerializer serializer = new MsgPackSerializer();
+        //    MessagePackSerializer serializer = MsgPack.Serialization.MessagePackSerializer.Get(typeof(Mall));
+        //    Stopwatch sw = new Stopwatch();
+        //    byte[] data = null;
 
-            sw.Restart();
-            for (var i = 0; i < seed; i++)
-            {
-                data = serializer.PackSingleObject(mall);
-                //data = serializer.Serialize(mall);
-            }
-            sw.Stop();
+        //    sw.Restart();
+        //    for (var i = 0; i < seed; i++)
+        //    {
+        //        data = serializer.PackSingleObject(mall);
+        //        //data = serializer.Serialize(mall);
+        //    }
+        //    sw.Stop();
 
-            Console.WriteLine("MsgPackTest Serialize:{0}ms", sw.ElapsedMilliseconds);
+        //    Console.WriteLine("MsgPackTest Serialize:{0}ms", sw.ElapsedMilliseconds);
 
-            sw.Restart();
-            for (var i = 0; i < seed; i++)
-            {
-                //mall = serializer.UnpackSingleObject(data);
-                mall = (Mall)serializer.UnpackSingleObject(data);
-                //mall = serializer.Deserialize<Mall>(data);
-            }
-            sw.Stop();
+        //    sw.Restart();
+        //    for (var i = 0; i < seed; i++)
+        //    {
+        //        //mall = serializer.UnpackSingleObject(data);
+        //        mall = (Mall)serializer.UnpackSingleObject(data);
+        //        //mall = serializer.Deserialize<Mall>(data);
+        //    }
+        //    sw.Stop();
 
-            Console.WriteLine("MsgPackTest Deserialize:{0}ms", sw.ElapsedMilliseconds);
-        }
+        //    Console.WriteLine("MsgPackTest Deserialize:{0}ms", sw.ElapsedMilliseconds);
+        //}
 
         public static void JilTest(int seed)
         {

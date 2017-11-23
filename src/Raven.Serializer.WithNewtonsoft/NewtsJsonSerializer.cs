@@ -7,7 +7,7 @@ namespace Raven.Serializer.WithNewtonsoft
     /// <summary>
     /// 
     /// </summary>
-    public class NewtsJsonSerializer : BasicDataSerializer, IDataSerializer
+    public class NewtsJsonSerializer : BasicDataSerializer, IDataSerializer, IStringDataSerializer
     {
         /// <summary>
         /// 
@@ -27,7 +27,7 @@ namespace Raven.Serializer.WithNewtonsoft
             var jsonString = JsonConvert.SerializeObject(obj, Settings);
             return encoding.GetBytes(jsonString);
         }
-
+        
         /// <summary>
         /// 
         /// </summary>
@@ -37,6 +37,15 @@ namespace Raven.Serializer.WithNewtonsoft
         {
             byte[] res = Serialize(obj);
             stream.Write(res, 0, res.Length);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string SerializeToString(object obj)
+        {
+            if (obj is string) return (string)obj;
+            return JsonConvert.SerializeObject(obj, Settings);
         }
 
         /// <summary>
@@ -69,7 +78,6 @@ namespace Raven.Serializer.WithNewtonsoft
             {
                 return res;
             }
-
             var jsonString = encoding.GetString(data);
             return JsonConvert.DeserializeObject(jsonString, type, Settings);
         }

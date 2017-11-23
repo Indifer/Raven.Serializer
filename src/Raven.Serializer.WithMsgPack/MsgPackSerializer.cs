@@ -1,4 +1,5 @@
-﻿using MsgPack.Serialization;
+﻿
+using MessagePack;
 using System;
 using System.IO;
 
@@ -12,24 +13,24 @@ namespace Raven.Serializer.WithMsgPack
         //private static Dictionary<string, IMessagePackSingleObjectSerializer> msgPackserializers = new Dictionary<string, IMessagePackSingleObjectSerializer>();
         //private static object _obj = new object();
         //private static readonly Encoding encoding = Encoding.UTF8;
-        private SerializationContext _context;
+        //private SerializationContext _context;
 
         /// <summary>
         /// 
         /// </summary>
         public MsgPackSerializer()
         {
-            _context = new SerializationContext() { SerializationMethod = SerializationMethod.Map };
+            //_context = new SerializationContext() { SerializationMethod = SerializationMethod.Map };
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="serializationMethod"></param>
-        public MsgPackSerializer(int serializationMethod)
-        {
-            _context = new SerializationContext() { SerializationMethod = (SerializationMethod)serializationMethod };
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="serializationMethod"></param>
+        //public MsgPackSerializer(int serializationMethod)
+        //{
+        //    //_context = new SerializationContext() { SerializationMethod = (SerializationMethod)serializationMethod };
+        //}
 
         /// <summary>
         /// 
@@ -38,15 +39,12 @@ namespace Raven.Serializer.WithMsgPack
         /// <returns></returns>
         public byte[] Serialize(object obj)
         {
-            Type t = obj.GetType();
-            MessagePackSerializer serializer = GetSerializer(t);
+            //Type t = obj.GetType();
+            //MessagePackSerializer serializer = GetSerializer(t);
 
-            return serializer.PackSingleObject(obj);
-            //using (var byteStream = new MemoryStream())
-            //{
-            //    serializer.Pack(byteStream, obj);
-            //    return byteStream.ToArray();
-            //}
+            //return serializer.PackSingleObject(obj);
+
+            return MessagePackSerializer.NonGeneric.Serialize(obj.GetType(), obj);
         }
 
         /// <summary>
@@ -56,10 +54,12 @@ namespace Raven.Serializer.WithMsgPack
         /// <param name="stream"></param>
         public void Serialize(object obj, Stream stream)
         {
-            Type t = obj.GetType();
-            MessagePackSerializer serializer = GetSerializer(t);
+            //Type t = obj.GetType();
+            //MessagePackSerializer serializer = GetSerializer(t);
 
-            serializer.Pack(stream, obj);
+            //serializer.Pack(stream, obj);
+
+            MessagePackSerializer.NonGeneric.Serialize(obj.GetType(), stream, obj);
         }
 
         /// <summary>
@@ -70,9 +70,11 @@ namespace Raven.Serializer.WithMsgPack
         /// <returns></returns>
         public T Deserialize<T>(byte[] data)
         {
-            MessagePackSerializer serializer = GetSerializer<T>();
+            //MessagePackSerializer serializer = GetSerializer<T>();
 
-            return (T)serializer.UnpackSingleObject(data);
+            //return (T)serializer.UnpackSingleObject(data);
+
+            return MessagePackSerializer.Deserialize<T>(data);
         }
 
         /// <summary>
@@ -83,8 +85,10 @@ namespace Raven.Serializer.WithMsgPack
         /// <returns></returns>
         public object Deserialize(Type type, byte[] data)
         {
-            MessagePackSerializer serializer = GetSerializer(type);
-            return serializer.UnpackSingleObject(data);
+            //MessagePackSerializer serializer = GetSerializer(type);
+            //return serializer.UnpackSingleObject(data);
+
+            return MessagePackSerializer.NonGeneric.Deserialize(type, data);
         }
 
         /// <summary>
@@ -97,13 +101,16 @@ namespace Raven.Serializer.WithMsgPack
         /// <returns></returns>
         public T Deserialize<T>(byte[] buffer, int index, int count)
         {
-            Type t = typeof(T);
-            MessagePackSerializer serializer = GetSerializer<T>();
+            //Type t = typeof(T);
+            //MessagePackSerializer serializer = GetSerializer<T>();
 
-            using (var byteStream = new MemoryStream(buffer, index, count))
-            {
-                return (T)serializer.Unpack(byteStream);
-            }
+            //using (var byteStream = new MemoryStream(buffer, index, count))
+            //{
+            //    return (T)serializer.Unpack(byteStream);
+            //}
+
+            ArraySegment<byte> bytes = new ArraySegment<byte>(buffer, index, count);
+            return MessagePackSerializer.Deserialize<T>(bytes);
 
         }
 
@@ -117,12 +124,15 @@ namespace Raven.Serializer.WithMsgPack
         /// <returns></returns>
         public object Deserialize(Type type, byte[] buffer, int index, int count)
         {
-            MessagePackSerializer serializer = GetSerializer(type);
+            //MessagePackSerializer serializer = GetSerializer(type);
 
-            using (var byteStream = new MemoryStream(buffer, index, count))
-            {
-                return serializer.Unpack(byteStream);
-            }
+            //using (var byteStream = new MemoryStream(buffer, index, count))
+            //{
+            //    return serializer.Unpack(byteStream);
+            //}
+
+            ArraySegment<byte> bytes = new ArraySegment<byte>(buffer, index, count);
+            return MessagePackSerializer.NonGeneric.Deserialize(type, bytes);
         }
 
         /// <summary>
@@ -133,9 +143,11 @@ namespace Raven.Serializer.WithMsgPack
         /// <returns></returns>
         public T Deserialize<T>(Stream stream)
         {
-            Type t = typeof(T);
-            MessagePackSerializer serializer = GetSerializer<T>();
-            return (T)serializer.Unpack(stream);
+            //Type t = typeof(T);
+            //MessagePackSerializer serializer = GetSerializer<T>();
+            //return (T)serializer.Unpack(stream);
+
+            return MessagePackSerializer.Deserialize<T>(stream);
         }
 
         /// <summary>
@@ -146,28 +158,32 @@ namespace Raven.Serializer.WithMsgPack
         /// <returns></returns>
         public object Deserialize(Type type, Stream stream)
         {
-            MessagePackSerializer serializer = GetSerializer(type);
-            return serializer.Unpack(stream);
+            //MessagePackSerializer serializer = GetSerializer(type);
+            //return serializer.Unpack(stream);
+
+            return MessagePackSerializer.NonGeneric.Deserialize(type, stream);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="t"></param>
-        /// <returns></returns>
-        private MessagePackSerializer GetSerializer(Type t)
-        {
-            return MessagePackSerializer.Get(t, _context);
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="t"></param>
+        ///// <returns></returns>
+        //private MessagePackSerializer GetSerializer(Type t)
+        //{
+        //    return MessagePackSerializer.Get(t, _context);
+        //}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="t"></param>
-        /// <returns></returns>
-        private MessagePackSerializer GetSerializer<T>()
-        {
-            return MessagePackSerializer.Get<T>(_context);
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="t"></param>
+        ///// <returns></returns>
+        //private MessagePackSerializer GetSerializer<T>()
+        //{
+        //    MessagePack.MessagePackSerializer.Serialize
+        //    return MessagePackSerializer.Get<T>(_context);
+        //}
+
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Raven.Serializer.PerformanceTest;
 using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Raven.Serializer.Test
@@ -139,6 +140,10 @@ namespace Raven.Serializer.Test
             var str2 = encoding.GetString(json);
             var res2 = JSON.Serialize(mall);
             var res3 = JSON.Deserialize<Mall>(res2);
+
+
+            str2 = "{\"name\":\"aagggg\"}";
+            mall = JSON.Deserialize<Mall>(str2);
             //Assert.AreEqual(str, val);
 
         }
@@ -190,6 +195,13 @@ namespace Raven.Serializer.Test
             var data = serializer.Serialize(123);
             Encoding encoding = Encoding.UTF8;
             var str2 = encoding.GetString(data);
+
+
+            json = "[{\"Name\":\"gggg\"},{\"name\":\"ggggaa\"}]";
+
+            var mall = Newtonsoft.Json.JsonConvert.DeserializeObject(json, typeof(List<Mall>));
+
+            ;
 
         }
     }
