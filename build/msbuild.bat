@@ -5,7 +5,7 @@ if not exist %fdir% (
 )
 
 set msbuild=C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe
-%msbuild% ../src/Raven.Serializer/Raven.Serializer.csproj /t:Clean;Rebuild /p:Configuration=Release;VisualStudioVersion=12.0;OutputPath="..\..\output\net45\Raven.Serializer"
+%msbuild% ../src/Raven.Serializer/Raven.Serializer.csproj /t:Clean;Rebuild /p:Configuration=Release;"
 
 ::set msbuild=C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe
 ::%msbuild% ../src/Raven.Serializer.WithJil/Raven.Serializer.WithJil.csproj /t:Clean;Rebuild ::/p:Configuration=Release;VisualStudioVersion=12.0;OutputPath="..\..\output\net45\Raven.Serializer.WithJil"
