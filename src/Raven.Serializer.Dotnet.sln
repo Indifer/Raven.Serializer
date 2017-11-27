@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer", "Raven.Serializer\Raven.Serializer.csproj", "{62F07E3B-4544-40BE-9556-71999BF917F7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6F05B7EC-FD0C-4C46-8D12-FFA7C5A35389}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer.WithNewtonsoft", "Raven.Serializer.WithNewtonsoft\Raven.Serializer.WithNewtonsoft.csproj", "{F3244F60-7BB7-4C45-94D1-CEEC34181CC5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer.WithMsgPack", "Raven.Serializer.WithMsgPack\Raven.Serializer.WithMsgPack.csproj", "{313AE66A-7409-4918-B8B2-C05A8DA52395}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer.WithJil", "Raven.Serializer.WithJil\Raven.Serializer.WithJil.csproj", "{6E6CE6B8-1A3D-43D0-911B-213CF3BC5850}"
 EndProject
@@ -22,6 +20,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer.NetCore.Test", "Test\Raven.Serializer.NetCore.Test\Raven.Serializer.NetCore.Test.csproj", "{CD57C3E5-4663-479D-B278-5B466DBCF382}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer.NetCore.PerformanceTest", "Test\Raven.Serializer.NetCore.PerformanceTest\Raven.Serializer.NetCore.PerformanceTest.csproj", "{4407121F-D200-4B71-BD76-899BD7080BFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.WithMsgPackCli", "Raven.Serializer.WithMsgPackCli\Raven.Serializer.WithMsgPackCli.csproj", "{36E46A39-B27C-4B30-8C47-63BB8A6FCBC2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer.WithMessagePack", "Raven.Serializer.WithMessagePack\Raven.Serializer.WithMessagePack.csproj", "{140F4790-8512-4B1A-8B28-E1DA2DCC5F7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +39,6 @@ Global
 		{F3244F60-7BB7-4C45-94D1-CEEC34181CC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3244F60-7BB7-4C45-94D1-CEEC34181CC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3244F60-7BB7-4C45-94D1-CEEC34181CC5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{313AE66A-7409-4918-B8B2-C05A8DA52395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{313AE66A-7409-4918-B8B2-C05A8DA52395}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{313AE66A-7409-4918-B8B2-C05A8DA52395}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{313AE66A-7409-4918-B8B2-C05A8DA52395}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6E6CE6B8-1A3D-43D0-911B-213CF3BC5850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6E6CE6B8-1A3D-43D0-911B-213CF3BC5850}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E6CE6B8-1A3D-43D0-911B-213CF3BC5850}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -61,6 +59,14 @@ Global
 		{4407121F-D200-4B71-BD76-899BD7080BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4407121F-D200-4B71-BD76-899BD7080BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4407121F-D200-4B71-BD76-899BD7080BFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36E46A39-B27C-4B30-8C47-63BB8A6FCBC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36E46A39-B27C-4B30-8C47-63BB8A6FCBC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36E46A39-B27C-4B30-8C47-63BB8A6FCBC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36E46A39-B27C-4B30-8C47-63BB8A6FCBC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{140F4790-8512-4B1A-8B28-E1DA2DCC5F7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{140F4790-8512-4B1A-8B28-E1DA2DCC5F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{140F4790-8512-4B1A-8B28-E1DA2DCC5F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{140F4790-8512-4B1A-8B28-E1DA2DCC5F7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,12 +74,13 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{62F07E3B-4544-40BE-9556-71999BF917F7} = {6F05B7EC-FD0C-4C46-8D12-FFA7C5A35389}
 		{F3244F60-7BB7-4C45-94D1-CEEC34181CC5} = {6F05B7EC-FD0C-4C46-8D12-FFA7C5A35389}
-		{313AE66A-7409-4918-B8B2-C05A8DA52395} = {6F05B7EC-FD0C-4C46-8D12-FFA7C5A35389}
 		{6E6CE6B8-1A3D-43D0-911B-213CF3BC5850} = {6F05B7EC-FD0C-4C46-8D12-FFA7C5A35389}
 		{DBCB47AB-17F3-4A2E-BEDE-6035F4F52AA5} = {BFEC3D3D-3395-44A7-AD46-E1B496FD1738}
 		{1CD872F9-BFB8-4595-A45D-91766DF2B7AA} = {BFEC3D3D-3395-44A7-AD46-E1B496FD1738}
 		{CD57C3E5-4663-479D-B278-5B466DBCF382} = {BFEC3D3D-3395-44A7-AD46-E1B496FD1738}
 		{4407121F-D200-4B71-BD76-899BD7080BFD} = {BFEC3D3D-3395-44A7-AD46-E1B496FD1738}
+		{36E46A39-B27C-4B30-8C47-63BB8A6FCBC2} = {6F05B7EC-FD0C-4C46-8D12-FFA7C5A35389}
+		{140F4790-8512-4B1A-8B28-E1DA2DCC5F7E} = {6F05B7EC-FD0C-4C46-8D12-FFA7C5A35389}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81A44A55-CFFD-4B5F-BCEB-717090AD059A}

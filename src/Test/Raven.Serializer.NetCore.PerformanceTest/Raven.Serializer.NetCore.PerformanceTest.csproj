@@ -19,7 +19,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Raven.Serializer.WithJil\Raven.Serializer.WithJil.csproj" />
-    <ProjectReference Include="..\..\Raven.Serializer.WithMsgPack\Raven.Serializer.WithMsgPack.csproj" />
+    <ProjectReference Include="..\..\Raven.Serializer.WithMessagePack\Raven.Serializer.WithMessagePack.csproj" />
+    <ProjectReference Include="..\..\Raven.Serializer.WithMsgPackCli\Raven.Serializer.WithMsgPackCli.csproj" />
     <ProjectReference Include="..\..\Raven.Serializer.WithNewtonsoft\Raven.Serializer.WithNewtonsoft.csproj" />
     <ProjectReference Include="..\..\Raven.Serializer\Raven.Serializer.csproj" />
   </ItemGroup>

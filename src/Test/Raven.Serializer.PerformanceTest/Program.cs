@@ -68,13 +68,13 @@ namespace Raven.Serializer.PerformanceTest
             //MsgPackTest(seed, mall);
 
             SpinWait.SpinUntil(() => false, 500);
-            Factory(seed, mall, SerializerType.MsgPack);
+            Factory(seed, mall, SerializerType.MessagePack);
 
-            //SpinWait.SpinUntil(() => false, 500);
-            //Factory(seed, mall, SerializerType.MsgPack, new object[] { SerializationMethod.Array });
+            SpinWait.SpinUntil(() => false, 500);
+            Factory(seed, mall, SerializerType.MsgPackCli, new object[] { MsgPack.Serialization.SerializationMethod.Array });
 
-            //SpinWait.SpinUntil(() => false, 500);
-            //Factory(seed, mall, SerializerType.MsgPack, new object[] { SerializationMethod.Map });
+            SpinWait.SpinUntil(() => false, 500);
+            Factory(seed, mall, SerializerType.MsgPackCli, new object[] { MsgPack.Serialization.SerializationMethod.Map });
 
             SpinWait.SpinUntil(() => false, 500);
             Factory(seed, mall, SerializerType.NewtonsoftBson);

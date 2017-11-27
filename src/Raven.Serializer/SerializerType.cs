@@ -12,7 +12,7 @@
         /// <summary>
         /// 
         /// </summary>
-        MsgPack = 2,
+        MsgPackCli = 2,
         /// <summary>
         /// 
         /// </summary>
@@ -27,15 +27,9 @@
         NewtonsoftBson = 5,
 
         /// <summary>
-        /// 
+        ///     
         /// </summary>
-        //MongoDBJson = 6,
+        MessagePack = 6,
 
-#if net45 || net46
-        /// <summary>
-        /// 
-        /// </summary>
-        MongoDBBson = 7,
-#endif
     }
 }

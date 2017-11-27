@@ -85,9 +85,13 @@
       <Project>{6e6ce6b8-1a3d-43d0-911b-213cf3bc5850}</Project>
       <Name>Raven.Serializer.WithJil</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Raven.Serializer.WithMsgPack\Raven.Serializer.WithMsgPack.csproj">
-      <Project>{313ae66a-7409-4918-b8b2-c05a8da52395}</Project>
-      <Name>Raven.Serializer.WithMsgPack</Name>
+    <ProjectReference Include="..\..\Raven.Serializer.WithMessagePack\Raven.Serializer.WithMessagePack.csproj">
+      <Project>{140f4790-8512-4b1a-8b28-e1da2dcc5f7e}</Project>
+      <Name>Raven.Serializer.WithMessagePack</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Raven.Serializer.WithMsgPackCli\Raven.Serializer.WithMsgPackCli.csproj">
+      <Project>{36e46a39-b27c-4b30-8c47-63bb8a6fcbc2}</Project>
+      <Name>Raven.Serializer.WithMsgPackCli</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Raven.Serializer.WithNewtonsoft\Raven.Serializer.WithNewtonsoft.csproj">
       <Project>{f3244f60-7bb7-4c45-94d1-ceec34181cc5}</Project>
