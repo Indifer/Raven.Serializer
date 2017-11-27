@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer.NetCore.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer.NetCore.PerformanceTest", "Test\Raven.Serializer.NetCore.PerformanceTest\Raven.Serializer.NetCore.PerformanceTest.csproj", "{4407121F-D200-4B71-BD76-899BD7080BFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.WithMsgPackCli", "Raven.Serializer.WithMsgPackCli\Raven.Serializer.WithMsgPackCli.csproj", "{36E46A39-B27C-4B30-8C47-63BB8A6FCBC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer.WithMsgPackCli", "Raven.Serializer.WithMsgPackCli\Raven.Serializer.WithMsgPackCli.csproj", "{36E46A39-B27C-4B30-8C47-63BB8A6FCBC2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raven.Serializer.WithMessagePack", "Raven.Serializer.WithMessagePack\Raven.Serializer.WithMessagePack.csproj", "{140F4790-8512-4B1A-8B28-E1DA2DCC5F7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven.Serializer.WithProtobuf", "Raven.Serializer.WithProtobuf\Raven.Serializer.WithProtobuf.csproj", "{18F6D4C9-6A92-4D41-8C78-FB67A83B9C6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,10 @@ Global
 		{140F4790-8512-4B1A-8B28-E1DA2DCC5F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{140F4790-8512-4B1A-8B28-E1DA2DCC5F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{140F4790-8512-4B1A-8B28-E1DA2DCC5F7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18F6D4C9-6A92-4D41-8C78-FB67A83B9C6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18F6D4C9-6A92-4D41-8C78-FB67A83B9C6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18F6D4C9-6A92-4D41-8C78-FB67A83B9C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18F6D4C9-6A92-4D41-8C78-FB67A83B9C6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +87,7 @@ Global
 		{4407121F-D200-4B71-BD76-899BD7080BFD} = {BFEC3D3D-3395-44A7-AD46-E1B496FD1738}
 		{36E46A39-B27C-4B30-8C47-63BB8A6FCBC2} = {6F05B7EC-FD0C-4C46-8D12-FFA7C5A35389}
 		{140F4790-8512-4B1A-8B28-E1DA2DCC5F7E} = {6F05B7EC-FD0C-4C46-8D12-FFA7C5A35389}
+		{18F6D4C9-6A92-4D41-8C78-FB67A83B9C6B} = {6F05B7EC-FD0C-4C46-8D12-FFA7C5A35389}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81A44A55-CFFD-4B5F-BCEB-717090AD059A}

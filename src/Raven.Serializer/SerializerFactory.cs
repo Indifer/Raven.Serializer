@@ -18,7 +18,7 @@ namespace Raven.Serializer
             { Serializer.SerializerType.MsgPackCli , new[] { "Raven.Serializer.WithMsgPackCli", "MsgPackCliSerializer" }},
             { Serializer.SerializerType.NewtonsoftBson ,new[] { "Raven.Serializer.WithNewtonsoft","NewtsBsonSerializer" }},
             { Serializer.SerializerType.NewtonsoftJson ,new[] { "Raven.Serializer.WithNewtonsoft","NewtsJsonSerializer" }},
-            { Serializer.SerializerType.Protobuf , new[] {"Raven.Serializer.WithProtobuf","ProtobufSerializer" }},
+            { Serializer.SerializerType.Protobuf , new[] { "Raven.Serializer.WithProtobuf", "ProtobufSerializer" }},
             { Serializer.SerializerType.MessagePack , new[] { "Raven.Serializer.WithMessagePack", "MessagePackSerializer" }},
         };
 
@@ -50,7 +50,7 @@ namespace Raven.Serializer
             }
         }
 
-#endregion
+        #endregion
 
         /// <summary>
         /// 
