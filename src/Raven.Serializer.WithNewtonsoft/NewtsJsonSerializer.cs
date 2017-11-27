@@ -12,7 +12,34 @@ namespace Raven.Serializer.WithNewtonsoft
         /// <summary>
         /// 
         /// </summary>
-        public static JsonSerializerSettings Settings = new JsonSerializerSettings() { Formatting = Formatting.None };
+        public static readonly JsonSerializerSettings DefalutSettings = new JsonSerializerSettings() { Formatting = Formatting.None };
+        JsonSerializerSettings _setting = null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private JsonSerializerSettings GetSetting()
+        {
+            return _setting ?? DefalutSettings;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public NewtsJsonSerializer()
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="setting"></param>
+        public NewtsJsonSerializer(SerizlizerSetting setting)
+        {
+            _setting = new JsonSerializerSettings();
+            _setting.DateFormatString = setting.DateFormatString;
+        }
 
         /// <summary>
         /// 
@@ -24,10 +51,10 @@ namespace Raven.Serializer.WithNewtonsoft
                 return res;
             }
 
-            var jsonString = JsonConvert.SerializeObject(obj, Settings);
+            var jsonString = JsonConvert.SerializeObject(obj, GetSetting());
             return encoding.GetBytes(jsonString);
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -45,7 +72,7 @@ namespace Raven.Serializer.WithNewtonsoft
         public string SerializeToString(object obj)
         {
             if (obj is string) return (string)obj;
-            return JsonConvert.SerializeObject(obj, Settings);
+            return JsonConvert.SerializeObject(obj, GetSetting());
         }
 
         /// <summary>
@@ -63,7 +90,7 @@ namespace Raven.Serializer.WithNewtonsoft
             }
 
             var jsonString = encoding.GetString(data);
-            return JsonConvert.DeserializeObject<T>(jsonString, Settings);
+            return JsonConvert.DeserializeObject<T>(jsonString, GetSetting());
         }
 
         /// <summary>
@@ -79,7 +106,7 @@ namespace Raven.Serializer.WithNewtonsoft
                 return res;
             }
             var jsonString = encoding.GetString(data);
-            return JsonConvert.DeserializeObject(jsonString, type, Settings);
+            return JsonConvert.DeserializeObject(jsonString, type, GetSetting());
         }
 
         /// <summary>
@@ -99,7 +126,7 @@ namespace Raven.Serializer.WithNewtonsoft
             }
 
             var jsonString = encoding.GetString(data, index, count);
-            return JsonConvert.DeserializeObject<T>(jsonString, Settings);
+            return JsonConvert.DeserializeObject<T>(jsonString, GetSetting());
         }
 
         /// <summary>
@@ -118,7 +145,7 @@ namespace Raven.Serializer.WithNewtonsoft
             }
 
             var jsonString = encoding.GetString(data, index, count);
-            return JsonConvert.DeserializeObject(jsonString, type, Settings);
+            return JsonConvert.DeserializeObject(jsonString, type, GetSetting());
         }
 
         /// <summary>

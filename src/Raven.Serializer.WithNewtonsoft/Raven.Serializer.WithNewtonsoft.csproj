@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFrameworks>net46;net47;netstandard2.0;</TargetFrameworks>
-    <AssemblyVersion>2.0.1.0</AssemblyVersion>
-    <FileVersion>2.0.1.0</FileVersion>
-    <Version>2.0.1</Version>
+    <AssemblyVersion>2.0.2.0</AssemblyVersion>
+    <FileVersion>2.0.2.0</FileVersion>
+    <Version>2.0.2</Version>
     <Authors>Yi.Liang</Authors>
     <Company>indifer@126.com</Company>
     <Product>Raven.Serializer.WithNewtonsoft</Product>
@@ -20,7 +20,7 @@
     <DocumentationFile>bin\Release\net47\Raven.Serializer.WithNewtonsoft.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard1.6\Raven.Serializer.WithNewtonsoft.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard2.0\Raven.Serializer.WithNewtonsoft.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
