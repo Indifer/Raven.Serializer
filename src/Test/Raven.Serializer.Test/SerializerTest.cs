@@ -13,7 +13,7 @@ namespace Raven.Serializer.Test
         [TestMethod]
         public void MsgPackSerialize()
         {
-            string val = "abc个";
+            //string val = "abc个";
             byte[] buffer = new byte[7];
             buffer[0] = 166;
             buffer[1] = 97;
@@ -23,7 +23,7 @@ namespace Raven.Serializer.Test
             buffer[5] = 184;
             buffer[6] = 170;
 
-            IDataSerializer serializer = SerializerFactory.Create(SerializerType.MsgPack);
+            IDataSerializer serializer = SerializerFactory.Create(SerializerType.MessagePack);
 
             //byte[] data = serializer.Serialize(val);
             //CollectionAssert.AreEqual(data, buffer);
@@ -82,7 +82,7 @@ namespace Raven.Serializer.Test
             buffer[5] = 184;
             buffer[6] = 170;
 
-            IDataSerializer serializer = SerializerFactory.Create(SerializerType.MsgPack);
+            IDataSerializer serializer = SerializerFactory.Create(SerializerType.MessagePack);
 
             byte[] data = serializer.Serialize(val);
             CollectionAssert.AreEqual(data, buffer);

@@ -8,8 +8,17 @@ namespace Raven.Serializer
     /// </summary>
     public abstract class BasicDataSerializer
     {
+        /// <summary>
+        /// 
+        /// </summary>
         protected static readonly Encoding encoding = Encoding.UTF8;
+        /// <summary>
+        /// 
+        /// </summary>
         protected static readonly Type stringType = typeof(string);
+        /// <summary>
+        /// 
+        /// </summary>
         protected static readonly Type byteArrayType = typeof(byte[]);
         
         /// <summary>

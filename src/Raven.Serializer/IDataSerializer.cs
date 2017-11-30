@@ -69,7 +69,6 @@ namespace Raven.Serializer
         /// <summary>
         /// 
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="type"></param>
         /// <param name="stream"></param>
         /// <returns></returns>

@@ -77,6 +77,7 @@ namespace Raven.Serializer
         /// 创建类型
         /// </summary>
         /// <param name="serializerType"></param>
+        /// <param name="args"></param>
         /// <returns></returns>
         public static IDataSerializer Create(SerializerType serializerType, object[] args)
         {
@@ -99,6 +100,7 @@ namespace Raven.Serializer
         /// 创建类型
         /// </summary>
         /// <param name="serializerType"></param>
+        /// <param name="args"></param>
         /// <returns></returns>
         public static IDataSerializer Create(string serializerType, object[] args)
         {
