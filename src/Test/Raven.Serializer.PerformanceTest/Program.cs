@@ -65,6 +65,9 @@ namespace Raven.Serializer.PerformanceTest
 
             Console.WriteLine("序列化数据次数：{0:N0}", seed);
 
+            Console.WriteLine("{0,-40}{1,-10}{2,10}", "Serialize Type", "args", "time");
+            Console.WriteLine("-----------------------------------------------------------------------");
+
             SpinWait.SpinUntil(() => false, 500);
             Factory(seed, mall, SerializerType.Jil);
 
@@ -93,11 +96,15 @@ namespace Raven.Serializer.PerformanceTest
             //Factory(seed, mall, SerializerType.MongoDBBson);
 
             Console.WriteLine("serializer over......");
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("sort......");
+            Console.WriteLine("{0,-40}{1,-10}{2,10}", "Serialize Type", "args", "time");
+            Console.WriteLine("-----------------------------------------------------------------------");
 
             foreach (var item in sortDict.OrderBy(x => x.Item2))
             {
-                Console.WriteLine("{0}:{1}", item.Item1, item.Item2);
+                Console.WriteLine(item.Item1);
             }
 
             Console.WriteLine("sort over......");
@@ -164,8 +171,12 @@ namespace Raven.Serializer.PerformanceTest
             }
             sw.Stop();
 
-            Console.WriteLine("{1} Serialize:{0}ms, args:{2}", sw.ElapsedMilliseconds, serializer.GetType().Name, args?[0]);
-            sortDict.Add(new Tuple<string, long>(string.Format("{0} Serialize, args:{1}", serializer.GetType().Name, args?[0]), sw.ElapsedMilliseconds));
+            string res;
+            res = string.Format("Serialize: {0,-29}{1,-10}{2,8}ms", serializer.GetType().Name, args?[0], sw.ElapsedMilliseconds);
+            Console.WriteLine(res);
+
+            //Console.WriteLine("{1,-30} Serialize:{0}ms, args:{2}", sw.ElapsedMilliseconds, serializer.GetType().Name, args?[0]);
+            sortDict.Add(new Tuple<string, long>(res, sw.ElapsedMilliseconds));
             sw.Restart();
             for (var i = 0; i < seed; i++)
             {
@@ -173,8 +184,10 @@ namespace Raven.Serializer.PerformanceTest
             }
             sw.Stop();
 
-            Console.WriteLine("{1} Deserialize:{0}ms, args:{2}", sw.ElapsedMilliseconds, serializer.GetType().Name, args?[0]);
-            sortDict.Add(new Tuple<string, long>(string.Format("{0} Deserialize, args:{1}", serializer.GetType().Name, args?[0]), sw.ElapsedMilliseconds));
+            res = string.Format("Deserialize: {0,-27}{1,-10}{2,8}ms", serializer.GetType().Name, args?[0], sw.ElapsedMilliseconds);
+            Console.WriteLine(res);
+            //Console.WriteLine("{1,-10} Deserialize:{0}ms, args:{2}", sw.ElapsedMilliseconds, serializer.GetType().Name, args?[0]);
+            sortDict.Add(new Tuple<string, long>(res, sw.ElapsedMilliseconds));
         }
 
         //public static void MsgPackTest(int seed, Mall mall)
