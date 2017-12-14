@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Raven.Serializer.WithMsgPack</id>
+        <version>2.0.0</version>
+        <authors>Yi Liang</authors>
+        <owners>indifer@126.com</owners>
+        <iconUrl>http://res-1251080116.costj.myqcloud.com/raven4.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Raven.Serializer.WithMsgPack</description>
+        <dependencies>
+            <dependency id="MsgPack.Cli" version="0.9.1" />
+            <dependency id="Raven.Serializer" version="2.0.0" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\output\net45\Raven.Serializer.WithMsgPack\Raven.Serializer.WithMsgPack.dll" target="lib\net45\Raven.Serializer.WithMsgPack.dll" />
+        <file src="..\output\net45\Raven.Serializer.WithMsgPack\Raven.Serializer.WithMsgPack.pdb" target="lib\net45\Raven.Serializer.WithMsgPack.pdb" />
+        <file src="..\output\net45\Raven.Serializer.WithMsgPack\Raven.Serializer.WithMsgPack.xml" target="lib\net45\Raven.Serializer.WithMsgPack.xml" />
+    </files>
+</package>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Raven.Serializer.WithJil</id>
+        <version>2.0.1</version>
+        <authors>Yi Liang</authors>
+        <owners>indifer@126.com</owners>
+        <iconUrl>http://res-1251080116.costj.myqcloud.com/raven4.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Raven.Serializer.WithJil</description>
+        <dependencies>
+            <dependency id="Jil" version="2.15.4" />
+            <dependency id="Raven.Serializer" version="2.0.3" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\output\Raven.Serializer.WithJil\net45\Raven.Serializer.WithJil.dll" target="lib\net45\Raven.Serializer.WithJil.dll" />
+        <file src="..\output\Raven.Serializer.WithJil\net45\Raven.Serializer.WithJil.xml" target="lib\net45\Raven.Serializer.WithJil.xml" />
+        <file src="..\output\Raven.Serializer.WithJil\netstandard2.0\Raven.Serializer.WithJil.dll" target="lib\netstandard2.0\Raven.Serializer.WithJil.dll" />
+        <file src="..\output\Raven.Serializer.WithJil\netstandard2.0\Raven.Serializer.WithJil.xml" target="lib\netstandard2.0\Raven.Serializer.WithJil.xml" />
+    </files>
+</package>

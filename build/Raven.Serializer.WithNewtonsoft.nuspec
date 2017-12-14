@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Raven.Serializer.WithNewtonsoft</id>
+        <version>2.0.3</version>
+        <authors>Yi Liang</authors>
+        <owners>indifer@126.com</owners>
+        <iconUrl>http://res-1251080116.costj.myqcloud.com/raven4.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Raven.Serializer.WithNewtonsoft</description>
+        <dependencies>
+            <dependency id="Newtonsoft.Json" version="10.0.3" />
+            <dependency id="Raven.Serializer" version="2.0.3" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\output\Raven.Serializer.WithNewtonsoft\net45\Raven.Serializer.WithNewtonsoft.dll" target="lib\net45\Raven.Serializer.WithNewtonsoft.dll" />
+        <file src="..\output\Raven.Serializer.WithNewtonsoft\net45\Raven.Serializer.WithNewtonsoft.xml" target="lib\net45\Raven.Serializer.WithNewtonsoft.xml" />
+        <file src="..\output\Raven.Serializer.WithNewtonsoft\net47\Raven.Serializer.WithNewtonsoft.dll" target="lib\net47\Raven.Serializer.WithNewtonsoft.dll" />
+        <file src="..\output\Raven.Serializer.WithNewtonsoft\net47\Raven.Serializer.WithNewtonsoft.xml" target="lib\net47\Raven.Serializer.WithNewtonsoft.xml" />
+        <file src="..\output\Raven.Serializer.WithNewtonsoft\netstandard2.0\Raven.Serializer.WithNewtonsoft.dll" target="lib\netstandard2.0\Raven.Serializer.WithNewtonsoft.dll" />
+        <file src="..\output\Raven.Serializer.WithNewtonsoft\netstandard2.0\Raven.Serializer.WithNewtonsoft.xml" target="lib\netstandard2.0\Raven.Serializer.WithNewtonsoft.xml" />
+    </files>
+</package>

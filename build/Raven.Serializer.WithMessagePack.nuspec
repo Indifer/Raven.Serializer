@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Raven.Serializer.WithMessagePack</id>
+        <version>2.0.3</version>
+        <authors>Yi Liang</authors>
+        <owners>indifer@126.com</owners>
+        <iconUrl>http://res-1251080116.costj.myqcloud.com/raven4.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Raven.Serializer.WithMessagePack</description>
+        <dependencies>
+            <dependency id="MessagePack" version="1.7.2" />
+            <dependency id="Raven.Serializer" version="2.0.3" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\output\Raven.Serializer.WithMessagePack\net45\Raven.Serializer.WithMessagePack.dll" target="lib\net45\Raven.Serializer.WithMessagePack.dll" />
+        <file src="..\output\Raven.Serializer.WithMessagePack\net45\Raven.Serializer.WithMessagePack.xml" target="lib\net45\Raven.Serializer.WithMessagePack.xml" />
+        <file src="..\output\Raven.Serializer.WithMessagePack\net47\Raven.Serializer.WithMessagePack.dll" target="lib\net47\Raven.Serializer.WithMessagePack.dll" />
+        <file src="..\output\Raven.Serializer.WithMessagePack\net47\Raven.Serializer.WithMessagePack.xml" target="lib\net47\Raven.Serializer.WithMessagePack.xml" />
+        <file src="..\output\Raven.Serializer.WithMessagePack\netstandard2.0\Raven.Serializer.WithMessagePack.dll" target="lib\netstandard2.0\Raven.Serializer.WithMessagePack.dll" />
+        <file src="..\output\Raven.Serializer.WithMessagePack\netstandard2.0\Raven.Serializer.WithMessagePack.xml" target="lib\netstandard2.0\Raven.Serializer.WithMessagePack.xml" />
+    </files>
+</package>

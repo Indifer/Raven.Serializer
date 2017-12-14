@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net45;net47;netstandard2.0;</TargetFrameworks>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.1.0</Version>
+    <PackageIconUrl>http://res-1251080116.costj.myqcloud.com/raven4.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/Raven-Source/Raven.Serializer</PackageProjectUrl>
+    <Product>Raven.Serializer.WithMessagePack</Product>
+    <Description>Raven.Serializer.WithMessagePack</Description>
+    <Authors>Yi.Liang</Authors>
+    <Company>indifer@126.com</Company>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\$(TargetFramework)\Raven.Serializer.WithMessagePack.xml</DocumentationFile>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="MessagePack" Version="1.7.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Raven.Serializer\Raven.Serializer.csproj" />
+  </ItemGroup> 
+
+</Project>

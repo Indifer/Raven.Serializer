@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Raven.Serializer</id>
+        <version>2.0.3</version>
+        <authors>Yi Liang</authors>
+        <owners>indifer@126.com</owners>
+        <iconUrl>http://res-1251080116.costj.myqcloud.com/raven4.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Raven.Serializer</description>
+    </metadata>
+    <files>
+        <file src="..\output\Raven.Serializer\net45\Raven.Serializer.dll" target="lib\net45\Raven.Serializer.dll" />
+        <file src="..\output\Raven.Serializer\net45\Raven.Serializer.xml" target="lib\net45\Raven.Serializer.xml" />
+        <file src="..\output\Raven.Serializer\netstandard2.0\Raven.Serializer.dll" target="lib\netstandard2.0\Raven.Serializer.dll" />
+        <file src="..\output\Raven.Serializer\netstandard2.0\Raven.Serializer.xml" target="lib\netstandard2.0\Raven.Serializer.xml" />
+    </files>
+</package>

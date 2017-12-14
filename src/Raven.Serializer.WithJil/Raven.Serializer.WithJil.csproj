@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net45;netstandard2.0;</TargetFrameworks>
+    <AssemblyVersion>2.0.1.0</AssemblyVersion>
+    <FileVersion>2.0.1.0</FileVersion>
+    <Version>2.0.1</Version>
+    <Authors>Yi.Liang</Authors>
+    <Company>indifer@126.com</Company>
+    <Product>Raven.Serializer.WithJil</Product>
+    <Description>Raven.Serializer.WithJil</Description>
+    <PackageProjectUrl>https://github.com/Raven-Source/Raven.Serializer</PackageProjectUrl>
+    <PackageIconUrl>http://res-1251080116.costj.myqcloud.com/raven4.png</PackageIconUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\$(TargetFramework)\Raven.Serializer.WithJil.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Jil" Version="2.15.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Raven.Serializer\Raven.Serializer.csproj" />
+  </ItemGroup>
+
+</Project>

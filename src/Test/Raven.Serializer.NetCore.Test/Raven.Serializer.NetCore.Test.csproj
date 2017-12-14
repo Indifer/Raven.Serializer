@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>    
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Raven.Serializer.PerformanceTest\Mall.cs" Link="Mall.cs" />
+    <Compile Include="..\Raven.Serializer.Test\ResponseModel.cs" Link="ResponseModel.cs" />
+    <Compile Include="..\Raven.Serializer.Test\SerializerTest.cs" Link="SerializerTest.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Jil" Version="2.15.4" />
+    <PackageReference Include="MessagePack" Version="1.7.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.2.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Raven.Serializer.WithJil\Raven.Serializer.WithJil.csproj" />
+    <ProjectReference Include="..\..\Raven.Serializer.WithMessagePack\Raven.Serializer.WithMessagePack.csproj" />
+    <ProjectReference Include="..\..\Raven.Serializer.WithMsgPackCli\Raven.Serializer.WithMsgPackCli.csproj" />
+    <ProjectReference Include="..\..\Raven.Serializer.WithNewtonsoft\Raven.Serializer.WithNewtonsoft.csproj" />
+    <ProjectReference Include="..\..\Raven.Serializer\Raven.Serializer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
+  </ItemGroup>
+
+</Project>
