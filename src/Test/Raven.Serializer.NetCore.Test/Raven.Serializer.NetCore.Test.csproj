@@ -17,6 +17,7 @@
     <PackageReference Include="MSTest.TestAdapter" Version="1.2.0" />
     <PackageReference Include="MSTest.TestFramework" Version="1.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="protobuf-net" Version="2.3.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,7 @@
     <ProjectReference Include="..\..\Raven.Serializer.WithMessagePack\Raven.Serializer.WithMessagePack.csproj" />
     <ProjectReference Include="..\..\Raven.Serializer.WithMsgPackCli\Raven.Serializer.WithMsgPackCli.csproj" />
     <ProjectReference Include="..\..\Raven.Serializer.WithNewtonsoft\Raven.Serializer.WithNewtonsoft.csproj" />
+    <ProjectReference Include="..\..\Raven.Serializer.WithProtobuf\Raven.Serializer.WithProtobuf.csproj" />
     <ProjectReference Include="..\..\Raven.Serializer\Raven.Serializer.csproj" />
   </ItemGroup>
 

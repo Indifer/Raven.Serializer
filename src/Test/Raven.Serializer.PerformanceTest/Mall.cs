@@ -17,7 +17,7 @@ namespace Raven.Serializer.PerformanceTest
         public long ID { get; set; }
 
 
-        [DataMember(Order = 1)]
+        [DataMember(Order = 1, Name = "n")]
         public string Name { get; set; }
 
         [DataMember(Order = 2)]
@@ -69,6 +69,14 @@ namespace Raven.Serializer.PerformanceTest
         {
 
         }
+    }
+
+    [DataContract]
+    public class Mall2
+    {
+        [DataMember(Order = 1)]
+        public string n { get; set; }
+
     }
 
     [DataContract]

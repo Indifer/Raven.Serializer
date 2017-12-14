@@ -11,6 +11,56 @@ namespace Raven.Serializer.Test
     public class SerializerTest
     {
         [TestMethod]
+        public void TestAll()
+        {
+            var action = new Action<IDataSerializer>((serializer) => 
+            {
+                Mall mall = new Mall()
+                {
+                    ID = 1,
+                    Name = "大悦城",
+                    GroupID = 135,
+                    AAAAAAAAAA = "aaaa",
+                    BBBBBBBBBB = "BBBB",
+                    CCCCCCCCCC = "hygfjrt7kuylkhgliu;oi;yhdhtfjhsj",
+                    D = "kuykj687jrstskhgfk",
+                    EEEEEEEEEE = "jhlhlgjhkuykjuyt",
+                    F = "djsgfjdjg",
+                    G = "fdsgasdgs",
+                    HHHHHHHHHH = "hgfdhergfdhs",
+                    I = "fdjnhterjrgtas",
+                    J = "fdhs5htrjgfdfdg",
+                    User = new User()
+                    {
+                        Date = DateTime.Now,
+                        ID = 132414,
+                        Name = "ggsgshahsahsdha"
+                    }
+                };
+
+                var data = serializer.Serialize(mall);
+                var res = serializer.Deserialize<Mall>(data);
+                Assert.AreEqual(mall.Name, res.Name);
+
+                Mall2 mall2 = serializer.Deserialize<Mall2>(data);
+                Assert.AreEqual(mall.Name, mall2.n);
+            });
+
+            List<IDataSerializer> serList = new List<IDataSerializer>
+            {
+                SerializerFactory.Create(SerializerType.Jil),
+                SerializerFactory.Create(SerializerType.MessagePack),
+                SerializerFactory.Create(SerializerType.MsgPackCli),
+                SerializerFactory.Create(SerializerType.NewtonsoftBson),
+                SerializerFactory.Create(SerializerType.NewtonsoftJson),
+                SerializerFactory.Create(SerializerType.Protobuf)
+            };
+
+            serList.ForEach(x => action(x));
+
+        }
+
+        [TestMethod]
         public void MsgPackSerialize()
         {
             //string val = "abc个";
@@ -55,8 +105,11 @@ namespace Raven.Serializer.Test
             };
 
             var json = serializer.Serialize(mall);
-            var mall2 = serializer.Deserialize<Mall>(json);
-            Assert.AreEqual(mall.Name, mall2.Name);
+            var res = serializer.Deserialize<Mall>(json);
+            Assert.AreEqual(mall.Name, res.Name);
+
+            Mall2 mall2 = serializer.Deserialize<Mall2>(json);
+            Assert.AreEqual(mall.Name, mall2.n);
 
 
             User user = new User() { Date = DateTime.Now, Date2 = DateTime.Now, ID = 1243321, Name = "ggsgdhddfhfdhdsg", A = 55555 };
