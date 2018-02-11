@@ -35,7 +35,7 @@ namespace Raven.Serializer.WithNewtonsoft
         /// 
         /// </summary>
         /// <param name="setting"></param>
-        public NewtsJsonSerializer(SerizlizerSetting setting)
+        public NewtsJsonSerializer(SerializerSetting setting)
         {
             _setting = new JsonSerializerSettings();
             _setting.DateFormatString = setting.DateFormatString;

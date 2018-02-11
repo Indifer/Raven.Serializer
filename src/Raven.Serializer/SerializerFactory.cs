@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Raven.Serializer
@@ -11,8 +12,8 @@ namespace Raven.Serializer
     {
         #region 字段、属性
 
-        private static Dictionary<string, IDataSerializer> _serializerDict = new Dictionary<string, IDataSerializer>();
-        private static Dictionary<SerializerType, string[]> _typeNameDict = new Dictionary<SerializerType, string[]>()
+        private static readonly Dictionary<string, IDataSerializer> _serializerDict = new Dictionary<string, IDataSerializer>();
+        private static readonly Dictionary<SerializerType, string[]> _typeNameDict = new Dictionary<SerializerType, string[]>()
         {
             { Serializer.SerializerType.Jil ,new[] { "Raven.Serializer.WithJil","JilJsonSerializer" }},
             { Serializer.SerializerType.MsgPackCli , new[] { "Raven.Serializer.WithMsgPackCli", "MsgPackCliSerializer" }},
@@ -38,7 +39,7 @@ namespace Raven.Serializer
                 Type type = Assembly.Load(new AssemblyName(typeName[0])).GetType(string.Concat(typeName[0], ".", typeName[1]), false, true);
                 if (type == null)
                 {
-                    throw new Exception(string.Format("缺少程序集:{0}", typeName[0]));
+                    throw new Exception($"缺少程序集:{typeName[0]}");
                 }
                 IDataSerializer serializer = (IDataSerializer)Activator.CreateInstance(type, args);
                 //IDataSerializer serializer = (IDataSerializer)Assembly.Load(new AssemblyName(typeName[0])).CreateInstance(string.Concat(typeName[0], ".", typeName[1]), true, BindingFlags.Default, null, args, null, null);
@@ -60,7 +61,7 @@ namespace Raven.Serializer
         /// <returns></returns>
         private static string GetKey(SerializerType serializerType, object[] args = null)
         {
-            return string.Format("{0}:{1}", _typeNameDict[serializerType][1], args == null ? string.Empty : string.Join("_", args));
+            return $"{_typeNameDict[serializerType][1]}:{(args == null ? string.Empty : string.Join("_", args))}";
         }
 
         /// <summary>

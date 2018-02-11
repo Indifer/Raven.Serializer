@@ -9,7 +9,7 @@ namespace Raven.Serializer.WithNewtonsoft
     /// <summary>
     /// 
     /// </summary>
-    public class SerizlizerSetting
+    public class SerializerSetting
     {
         /// <summary>
         /// 

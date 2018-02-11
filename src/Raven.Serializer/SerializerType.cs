@@ -9,18 +9,22 @@
         /// 
         /// </summary>
         Jil = 1,
+        
         /// <summary>
         /// 
         /// </summary>
         MsgPackCli = 2,
+        
         /// <summary>
         /// 
         /// </summary>
         Protobuf = 3,
+        
         /// <summary>
         /// 
         /// </summary>
         NewtonsoftJson = 4,
+        
         /// <summary>
         /// 
         /// </summary>

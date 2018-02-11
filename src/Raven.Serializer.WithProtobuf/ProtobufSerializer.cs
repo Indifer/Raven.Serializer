@@ -3,6 +3,9 @@ using System.IO;
 
 namespace Raven.Serializer.WithProtobuf
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ProtobufSerializer : IDataSerializer
     {
 
