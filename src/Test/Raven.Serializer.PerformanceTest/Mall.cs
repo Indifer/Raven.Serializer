@@ -125,6 +125,11 @@ namespace Raven.Serializer.PerformanceTest
     //[MessagePack.MessagePackObject]
     public class User2
     {
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
         [DataMember(Order = 0)]
         public long ID { get; set; }
 

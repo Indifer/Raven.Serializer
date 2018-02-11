@@ -90,24 +90,24 @@ namespace Raven.Serializer
         /// <summary>
         /// 创建类型
         /// </summary>
-        /// <param name="serializerType"></param>
+        /// <param name="serializerTypeStr"></param>
         /// <returns></returns>
-        public static IDataSerializer Create(string serializerType)
+        public static IDataSerializer Create(string serializerTypeStr)
         {
-            return Create(serializerType, null);
+            return Create(serializerTypeStr, null);
         }
 
         /// <summary>
         /// 创建类型
         /// </summary>
-        /// <param name="serializerType"></param>
+        /// <param name="serializerTypeStr"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static IDataSerializer Create(string serializerType, object[] args)
+        public static IDataSerializer Create(string serializerTypeStr, object[] args)
         {
-            SerializerType serializerTypeEnum;
-            Enum.TryParse(serializerType, out serializerTypeEnum);
-            return Create(serializerTypeEnum, args);
+            SerializerType serializerType;
+            Enum.TryParse(serializerTypeStr, out serializerType);
+            return Create(serializerType, args);
         }
     }
 }
