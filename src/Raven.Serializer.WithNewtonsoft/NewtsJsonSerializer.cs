@@ -44,6 +44,15 @@ namespace Raven.Serializer.WithNewtonsoft
         /// <summary>
         /// 
         /// </summary>
+        public string SerializeToString(object obj)
+        {
+            if (obj is string) return (string)obj;
+            return JsonConvert.SerializeObject(obj, GetSetting());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public byte[] Serialize(object obj)
         {
             if (TrySerialize(obj, out byte[] res))
@@ -64,15 +73,6 @@ namespace Raven.Serializer.WithNewtonsoft
         {
             byte[] res = Serialize(obj);
             stream.Write(res, 0, res.Length);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string SerializeToString(object obj)
-        {
-            if (obj is string) return (string)obj;
-            return JsonConvert.SerializeObject(obj, GetSetting());
         }
 
         /// <summary>

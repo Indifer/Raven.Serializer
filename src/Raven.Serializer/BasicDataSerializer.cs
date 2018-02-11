@@ -63,19 +63,7 @@ namespace Raven.Serializer
         /// <returns></returns>
         public bool TryDeserialize(Type type, byte[] data, out object res)
         {
-            if (type == byteArrayType)
-            {
-                res = data;
-                return true;
-            }
-            else if (type == stringType)
-            {
-                res = encoding.GetString(data);
-                return true;
-            }
-
-            res = null;
-            return false;
+            return this.TryDeserialize(type, data, 0, data.Length, out res);
         }
 
         /// <summary>

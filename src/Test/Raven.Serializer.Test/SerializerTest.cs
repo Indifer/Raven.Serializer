@@ -12,7 +12,7 @@ namespace Raven.Serializer.Test
     {
         [TestMethod]
         public void TestAll()
-        {
+        {            
             var action = new Action<IDataSerializer>((serializer) => 
             {
                 Mall mall = new Mall()
