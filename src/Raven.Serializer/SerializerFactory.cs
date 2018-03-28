@@ -41,7 +41,7 @@ namespace Raven.Serializer
                 {
                     throw new Exception($"缺少程序集:{typeName[0]}");
                 }
-                IDataSerializer serializer = (IDataSerializer)Activator.CreateInstance(type, args);
+                IDataSerializer serializer = Activator.CreateInstance(type, args) as IDataSerializer;
                 //IDataSerializer serializer = (IDataSerializer)Assembly.Load(new AssemblyName(typeName[0])).CreateInstance(string.Concat(typeName[0], ".", typeName[1]), true, BindingFlags.Default, null, args, null, null);
                 if (serializer != null)
                 {

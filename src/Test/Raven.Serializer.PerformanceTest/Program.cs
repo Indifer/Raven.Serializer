@@ -97,7 +97,7 @@ namespace Raven.Serializer.PerformanceTest
 
             Console.WriteLine("serializer over......");
             Console.WriteLine("");
-            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("sort......");
             Console.WriteLine("{0,-40}{1,-10}{2,10}", "Serialize Type", "args", "time");
             Console.WriteLine("-----------------------------------------------------------------------");
